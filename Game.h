@@ -23,6 +23,8 @@ private:
     sf::RenderWindow* window;
     Player* player;
     Room* room;
+    int windowWidth;
+    int windowHeight;
 };
 
 #endif	/* GAME_H */

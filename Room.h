@@ -8,7 +8,7 @@
 #ifndef ROOM_H
 #define	ROOM_H
 
-class Room {
+class Room : public DrawAble{
 public:
     Room();
     Room(const Room& orig);

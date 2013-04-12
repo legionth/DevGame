@@ -31,7 +31,7 @@ public:
     void setDatabases(int i);
     void setElectronics(int electronics);
     
-    void move(int x, int y, Room* room);
+    void move(int x, int y);
 private:
     int math;
     int algorithm;

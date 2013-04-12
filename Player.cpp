@@ -14,7 +14,7 @@ Player::Player() {
     setProgramming(0);
     
     createSprite("player.png");
-    setAnimationFrames(0,3);
+    setFrameSize(256,256);
     playAnimation(0,4);
 }
 
@@ -72,6 +72,6 @@ void Player::setProgramming(int i){
     this->programming = i;
 }
 
-void Player::move(int x, int y, Room* room){
+void Player::move(int x, int y){
     getSprite()->move(x,y);
 }

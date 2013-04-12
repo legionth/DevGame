@@ -10,13 +10,14 @@
 #include "Room.h"
 
 Room::Room() {
+    this->createSprite("room.png");
 }
 
 Room::Room(const Room& orig) {
 }
 
 Room::~Room() {
-    for(int i = 0; i <= roomObjects.size(); i++){
+    for(int i = 0; i < roomObjects.size(); i++){
         delete roomObjects[i];
     }
 }
@@ -30,7 +31,9 @@ std::vector<RoomObject*> Room::getRoomObjects() const {
 }
 
 void Room::draw(sf::RenderWindow* window){
-    for(int i = 0; i <= roomObjects.size(); i++){
+    DrawAble::draw(window);
+    std::cout<<roomObjects.size()<<std::endl;
+    for(int i = 0; i < roomObjects.size(); i++){
         roomObjects[i]->draw(window);
     }
 }

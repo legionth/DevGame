@@ -8,25 +8,35 @@
 #include "DrawAble.h"
 
 DrawAble::DrawAble() {
+    this->fps = 1;
+    this->playing = false;
+    this->sprite = 0;
+    this->setStartFrame(0);
+    this->setStopFrame(0);
+    this->setCurrentFrame(0);
 }
 
 DrawAble::DrawAble(const DrawAble& orig) {
 }
 
 DrawAble::~DrawAble() {
+    delete sprite;
 }
 
 void DrawAble::draw(sf::RenderWindow* window){
-    window->draw(*sprite);
+    if(sprite != 0 && sprite->getTexture() != 0){
+        this->updateAnimation();
+        window->draw(*sprite);
+    }
 }
 
 void DrawAble::createSprite(std::string file){
-    sf::Texture img;
-    if(img.loadFromFile(file)){
+    sf::Texture* img = new sf::Texture();
+    if(!img->loadFromFile(file)){
         std::cout<<"File:"<<file<<"not found!"<<std::endl;
         return;
     }
-    this->sprite = new sf::Sprite(img);
+    this->sprite = new sf::Sprite(*img);
 }
 
 sf::Sprite* DrawAble::getSprite(){
@@ -43,7 +53,7 @@ void DrawAble::setAnimationFrames(int start, int stop){
 }
 
 int DrawAble::getCurrentFrame(){
-    this->currentFrame;
+    return this->currentFrame;
 }
 
 bool DrawAble::isPlaying(){
@@ -58,6 +68,7 @@ void DrawAble::playAnimation(int start, int stop){
 
 void DrawAble::stopAnimation(){
     this->playing = false;
+    clock.restart();
 }
 
 void DrawAble::setStartFrame(int i){
@@ -86,9 +97,9 @@ void DrawAble::updateAnimation(){
         setCurrentFrame(getStartFrame() + (int)timePosition % frameCount);
         getSprite()->setTextureRect(getFrameRect(this->getCurrentFrame()));
         
-        if(getCurrentFrame() == getStopFrame()){
-            stopAnimation();
-        }
+    //    if(getCurrentFrame() == getStopFrame()){
+     //       stopAnimation();
+     //   }
         //std::cout<<"updateAnimation"<<getFrameWidth()<<"bla"<<getFrameHeight()<<std::endl;
     }
     else{
@@ -110,10 +121,10 @@ sf::IntRect DrawAble::getFrameRect(int frame){
     unsigned int height = (getSprite()->getTexture()->getSize().y / getFrameHeight());
 
     int tileX = frame % width;
-    int tileY = frame / width;
-    
+    int tileY = frame % height;
+
     sf::IntRect rect(tileX*getFrameWidth(),
-        tileY*getFrameHeight(),
+                     tileY*getFrameHeight(),
                      getFrameWidth(),
                      getFrameHeight()); // describes now the length and heigth not the end point see SFML docu
     
@@ -160,4 +171,5 @@ int DrawAble::getYPosition(){
 void DrawAble::setPosition(int x, int y){
     this->xPos = x;
     this->yPos = y;
+    this->getSprite()->setPosition(x,y);
 }
