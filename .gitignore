@@ -1,4 +1,4 @@
 #Netbeans IDE 
-/build
-/dist
-/nbproject
+build/
+dist/
+nbproject/
