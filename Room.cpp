@@ -32,7 +32,6 @@ std::vector<RoomObject*> Room::getRoomObjects() const {
 
 void Room::draw(sf::RenderWindow* window){
     DrawAble::draw(window);
-    std::cout<<roomObjects.size()<<std::endl;
     for(int i = 0; i < roomObjects.size(); i++){
         roomObjects[i]->draw(window);
     }

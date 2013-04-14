@@ -6,7 +6,13 @@
  */
 
 #include <iostream>
-#include <SFML/Graphics.hpp>
+
+#ifdef _WIN32
+	#include <SFML\Graphics.hpp>
+#else
+	#include <SFML/Graphics.hpp>
+#endif
+
 #ifndef DRAWABLE_H
 #define	DRAWABLE_H
 

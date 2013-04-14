@@ -4,8 +4,12 @@
  *
  * Created on 8. April 2013, 14:34
  */
+#ifdef _WIN32
+	#include "SFML\Graphics.hpp"
+#else
+	#include "SFML/Graphics.hpp"
+#endif
 
-#include "SFML/Graphics.hpp"
 #include "Player.h"
 #include "Room.h"
 #ifndef GAME_H

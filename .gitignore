@@ -2,3 +2,13 @@
 build/
 dist/
 nbproject/
+
+#Visual Studio
+*.sln
+.dep.inc
+*.sdf
+*.vcxproj
+*.vcxproj.filters
+*.tlog
+*.suo
+*.opensdf
