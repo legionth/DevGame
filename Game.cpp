@@ -36,11 +36,11 @@ void Game::run(){
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
 				event.mouseButton.x;
 				event.mouseButton.y;
-                float xArgument = sf::Mouse::getPosition().x;
-                float yArgument = sf::Mouse::getPosition().y;
+                float xArgument = event.mouseButton.x;// sf::Mouse::getPosition().x;
+                float yArgument = event.mouseButton.y;//sf::Mouse::getPosition().y;
 
-                yArgument = event.mouseButton.y - player->getSprite()->getPosition().y;
-                xArgument = event.mouseButton.x - player->getSprite()->getPosition().x;
+                //yArgument = event.mouseButton.y - player->getSprite()->getPosition().y;
+               // xArgument = event.mouseButton.x - player->getSprite()->getPosition().x;
                 
 
                 // std::cout<< event.mouseButton.y<<std::endl;

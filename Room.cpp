@@ -11,6 +11,7 @@
 
 Room::Room() {
     this->createSprite("room.png");
+	this->setFrameSize(1024,768);
 }
 
 Room::Room(const Room& orig) {
