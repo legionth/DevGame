@@ -12,4 +12,9 @@
 
 #endif	/* INVENTORYCONSTS_H */
 
-const int maxItemsSite = 10;
+const int MAX_ITEMS_INVENTORY = 10;
+
+enum ROOM_IDS{ 
+	COMPUTER,
+	BOOKSHELF
+};

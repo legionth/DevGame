@@ -18,8 +18,12 @@ public:
     void use();
     void openMenu();
     void closeMenu();
+	void setMenu(Menu* menu);
+	int getId();
+	void setId(int);
 private:
     Menu* menu;
+	int id;
 };
 
 #endif	/* ROOMOBJECT_H */

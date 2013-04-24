@@ -25,5 +25,17 @@ void RoomObject::openMenu(){
 }
 
 void RoomObject::closeMenu(){
-    
+
+}
+
+void RoomObject::setMenu(Menu* menu){
+	this->menu = menu;
+}
+
+int RoomObject::getId(){
+	return this->id;
+}
+
+void RoomObject::setId(int i){
+	this->id = i;
 }
