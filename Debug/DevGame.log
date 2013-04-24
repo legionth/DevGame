@@ -1,13 +1,32 @@
-﻿Der Buildvorgang wurde am 21.04.2013 13:12:40 gestartet.
+﻿Der Buildvorgang wurde am 24.04.2013 22:13:07 gestartet.
      1>Projekt "C:\Users\legionth\Documents\GitHub\DevGame\DevGame.vcxproj" auf Knoten "2", Build Ziel(e).
      1>InitializeBuildStatus:
          "Debug\DevGame.unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Users\legionth\Documents\Libs\SFML-2.0-rc\include" /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Inventory.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Users\legionth\Documents\Libs\SFML-2.0-rc\include" /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Computer.cpp ComputerMenu.cpp DrawAble.cpp Game.cpp Inventory.cpp Menu.cpp Player.cpp Room.cpp RoomObject.cpp main.cpp
+         RoomObject.cpp
+         Game.cpp
+     1>Game.cpp(44): warning C4244: 'Argument': Konvertierung von 'int' in 'float', möglicher Datenverlust
+         DrawAble.cpp
+     1>DrawAble.cpp(174): warning C4244: 'Argument': Konvertierung von 'int' in 'float', möglicher Datenverlust
+         Code wird generiert...
+         Kompilieren...
+         main.cpp
+         Room.cpp
+     1>Room.cpp(21): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+     1>Room.cpp(36): warning C4018: '<': Konflikt zwischen 'signed' und 'unsigned'
+         Player.cpp
+     1>Player.cpp(76): warning C4244: 'Argument': Konvertierung von 'int' in 'float', möglicher Datenverlust
+         Menu.cpp
          Inventory.cpp
      1>Inventory.cpp(32): warning C4018: '<=': Konflikt zwischen 'signed' und 'unsigned'
+         ComputerMenu.cpp
+         Computer.cpp
+         Code wird generiert...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\legionth\Documents\GitHub\DevGame\Debug\DevGame.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\legionth\Documents\Libs\SFML-2.0-rc\lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-main-d.lib" "sfml-window-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\legionth\Documents\GitHub\DevGame\Debug\DevGame.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\legionth\Documents\GitHub\DevGame\Debug\DevGame.lib" /MACHINE:X86 Debug\ActionMenu.obj
+         Debug\Computer.obj
+         Debug\ComputerMenu.obj
          Debug\DrawAble.obj
          Debug\Game.obj
          Debug\Inventory.obj
@@ -25,4 +44,4 @@
 
 Build erfolgreich.
 
-Verstrichene Zeit 00:00:04.48
+Verstrichene Zeit 00:00:14.45

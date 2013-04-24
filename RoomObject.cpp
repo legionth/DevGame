@@ -21,11 +21,11 @@ void RoomObject::use(){
 }
 
 void RoomObject::openMenu(){
-    
+	this->menu->open();
 }
 
 void RoomObject::closeMenu(){
-
+	this->menu->close();
 }
 
 void RoomObject::setMenu(Menu* menu){
@@ -38,4 +38,12 @@ int RoomObject::getId(){
 
 void RoomObject::setId(int i){
 	this->id = i;
+}
+
+bool RoomObject::isMenuOpen(){
+	return this->menu->isOpen();
+}
+
+void RoomObject::drawMenu(sf::RenderWindow* window){
+	this->menu->draw(window);
 }

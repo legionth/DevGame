@@ -57,6 +57,9 @@ public:
     
     int getFPS();
     void setFPS(int i);
+
+	int getWidth();
+	int getHeight();
 private:
     sf::Sprite* sprite;
     int xPos;

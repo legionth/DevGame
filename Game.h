@@ -12,6 +12,7 @@
 
 #include "Player.h"
 #include "Room.h"
+#include "Computer.h"
 #ifndef GAME_H
 #define	GAME_H
 
@@ -23,6 +24,7 @@ public:
     
     void run();
     void draw();
+	void init();
 private:
     sf::RenderWindow* window;
     Player* player;

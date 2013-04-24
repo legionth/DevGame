@@ -16,6 +16,7 @@ Game::Game() {
     this->player->setPosition(windowWidth/2,windowHeight/2);
     
     this->room = new Room();
+
 }
 
 Game::Game(const Game& orig) {
@@ -27,7 +28,8 @@ Game::~Game() {
 }
 
 void Game::run(){
-    while(window->isOpen()){
+    init();
+	while(window->isOpen()){
         sf::Event event;
         while(window->pollEvent(event)){
             if(event.type == sf::Event::Closed){
@@ -39,16 +41,20 @@ void Game::run(){
                 int xArgument = sf::Mouse::getPosition(*window).x;
                 int yArgument = sf::Mouse::getPosition(*window).y;
 
-                //yArgument = event.mouseButton.y - player->getSprite()->getPosition().y;
-               // xArgument = event.mouseButton.x - player->getSprite()->getPosition().x;
-                
-
-                // std::cout<< event.mouseButton.y<<std::endl;
 				player->getSprite()->setPosition(xArgument,yArgument);
-				std::cout<<"x:"<<xArgument<<std::endl;
-				std::cout<<"y:"<<yArgument<<std::endl;
-               // std::cout<< sf::Mouse::getPosition().x<<std::endl;
-                //std::cout<< sf::Mouse::getPosition().y<<std::endl;
+			
+				int countRoomObjects = room->getRoomObjects().size();
+				for(int i = 0; i < countRoomObjects; i++){
+					RoomObject* obj = room->getRoomObjects()[i];
+
+					if(obj->getXPosition()					  < xArgument &&
+					   obj->getYPosition()					  < yArgument &&
+					   obj->getXPosition() + obj->getWidth()  > xArgument &&
+					   obj->getYPosition() + obj->getHeight() > yArgument){
+
+						   obj->openMenu();
+					}
+				}
             }
         }
         window->clear();
@@ -60,5 +66,19 @@ void Game::run(){
 void Game::draw(){
     room->draw(window);
     player->draw(window);
+	int countRoomObjects = room->getRoomObjects().size();
+	
+	for(int i = 0; i < countRoomObjects; i++){
+		RoomObject* obj = room->getRoomObjects()[i];
+		if(obj->isMenuOpen()){
+			obj->drawMenu(window);
+		}
+	}
+}
+
+void Game::init(){
+	Computer *computer = new Computer();
+	computer->setPosition(this->windowWidth/2 - computer->getWidth()/2,0);
+	room->addRoomObject(computer);
 }
 

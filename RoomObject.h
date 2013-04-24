@@ -19,8 +19,10 @@ public:
     void openMenu();
     void closeMenu();
 	void setMenu(Menu* menu);
+	bool isMenuOpen();
 	int getId();
 	void setId(int);
+	void drawMenu(sf::RenderWindow* window);
 private:
     Menu* menu;
 	int id;

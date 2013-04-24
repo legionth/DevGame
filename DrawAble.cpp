@@ -173,3 +173,11 @@ void DrawAble::setPosition(int x, int y){
     this->yPos = y;
     this->getSprite()->setPosition(x,y);
 }
+
+int DrawAble::getWidth(){
+	return this->width;
+}
+
+int DrawAble::getHeight(){
+	return this->height;
+}
