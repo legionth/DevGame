@@ -7,7 +7,7 @@
 
 #include "Menu.h"
 #include "Item.h"
-#include "InventoryConsts.h"
+#include "Consts.h"
 #ifndef INVENTORY_H
 #define	INVENTORY_H
 

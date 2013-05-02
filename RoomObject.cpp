@@ -46,4 +46,8 @@ bool RoomObject::isMenuOpen(){
 
 void RoomObject::drawMenu(sf::RenderWindow* window){
 	this->menu->draw(window);
+	for(int i = 0; i < menu->getButtons().size();i++){
+		Button* button = menu->getButtons()[i];
+		button->draw(window);
+	}
 }

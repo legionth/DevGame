@@ -8,8 +8,8 @@
 #include "Game.h"
 
 Game::Game() {
-    this->windowWidth = 1024;
-    this->windowHeight = 768;
+	this->windowWidth = SIZE_WINDOW_WIDTH_NORMAL;
+    this->windowHeight = SIZE_WINDOW_HEIGHT_NORMAL;
     this->window = new sf::RenderWindow(sf::VideoMode(windowWidth,windowHeight),"DevGame");
     
     this->player = new Player();

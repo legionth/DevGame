@@ -1,6 +1,7 @@
 #pragma once
 #include "roomobject.h"
-#include "InventoryConsts.h"
+#include "ComputerMenu.h"
+//#include "Consts.h"
 class Computer :
 	public RoomObject
 {
