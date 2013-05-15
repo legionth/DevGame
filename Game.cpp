@@ -16,6 +16,7 @@ Game::Game() {
     this->player->setPosition(windowWidth/2,windowHeight/2);
     
     this->room = new Room();
+	this->currentMenu = 0;
 
 }
 
@@ -40,20 +41,35 @@ void Game::run(){
 				event.mouseButton.y;
                 int xArgument = sf::Mouse::getPosition(*window).x;
                 int yArgument = sf::Mouse::getPosition(*window).y;
-
-				player->getSprite()->setPosition(xArgument,yArgument);
+				if(currentMenu == 0){
+					player->getSprite()->setPosition(xArgument,yArgument);
 			
-				int countRoomObjects = room->getRoomObjects().size();
-				for(int i = 0; i < countRoomObjects; i++){
-					RoomObject* obj = room->getRoomObjects()[i];
+					int countRoomObjects = room->getRoomObjects().size();
+					for(int i = 0; i < countRoomObjects; i++){
+						RoomObject* obj = room->getRoomObjects()[i];
 
-					if(obj->getXPosition()					  < xArgument &&
-					   obj->getYPosition()					  < yArgument &&
-					   obj->getXPosition() + obj->getWidth()  > xArgument &&
-					   obj->getYPosition() + obj->getHeight() > yArgument){
+						if(obj->getXPosition()					  < xArgument &&
+						   obj->getYPosition()					  < yArgument &&
+						   obj->getXPosition() + obj->getWidth()  > xArgument &&
+						   obj->getYPosition() + obj->getHeight() > yArgument){
 
-						   obj->openMenu();
+							   obj->openMenu();
+						}
 					}
+				}else{
+					int size = currentMenu->getButtons().size();
+
+					for(int i=0; i < size; i++){
+						Button* obj = currentMenu->getButtons()[i];
+
+						if(obj->getXPosition()					  < xArgument &&
+						   obj->getYPosition()					  < yArgument &&
+						   obj->getXPosition() + obj->getWidth()  > xArgument &&
+						   obj->getYPosition() + obj->getHeight() > yArgument){
+							   obj->action();
+						}
+					}
+
 				}
             }
         }
@@ -82,3 +98,6 @@ void Game::init(){
 	room->addRoomObject(computer);
 }
 
+void Game::setCurrentMenu(Menu* menu){
+	this->currentMenu = menu;
+}

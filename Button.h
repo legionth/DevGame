@@ -1,5 +1,5 @@
 #include "DrawAble.h"
-
+#pragma once
 class Button: public DrawAble{
 public:
 	Button(void);

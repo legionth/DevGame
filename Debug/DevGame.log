@@ -1,5 +1,9 @@
-﻿Der Buildvorgang wurde am 02.05.2013 23:22:12 gestartet.
+﻿Der Buildvorgang wurde am 15.05.2013 22:21:50 gestartet.
+     1>Projekt "C:\Users\legionth\Documents\GitHub\DevGame\DevGame.vcxproj" auf Knoten "2", Clean Ziel(e).
+     1>_PrepareForClean:
+         Die Datei "Debug\DevGame.lastbuildstate" wird gelöscht.
+     1>Die Erstellung des Projekts "C:\Users\legionth\Documents\GitHub\DevGame\DevGame.vcxproj" ist abgeschlossen, Clean Ziel(e).
 
 Build erfolgreich.
 
-Verstrichene Zeit 00:00:00.01
+Verstrichene Zeit 00:00:00.13

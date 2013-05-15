@@ -27,12 +27,14 @@ public:
     void run();
     void draw();
 	void init();
+	void setCurrentMenu(Menu* menu);
 private:
     sf::RenderWindow* window;
     Player* player;
     Room* room;
     int windowWidth;
     int windowHeight;
+	Menu* currentMenu;
 };
 
 #endif	/* GAME_H */
