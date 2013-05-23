@@ -30,6 +30,7 @@ public:
 
 	void addButton(Button* button);
 	std::vector<Button*> getButtons();
+	void draw(sf::RenderWindow* window);
 private:
     bool isopen;
 

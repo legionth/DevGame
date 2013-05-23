@@ -41,6 +41,7 @@ void Game::run(){
 				event.mouseButton.y;
                 int xArgument = sf::Mouse::getPosition(*window).x;
                 int yArgument = sf::Mouse::getPosition(*window).y;
+				
 				if(currentMenu == 0){
 					player->getSprite()->setPosition(xArgument,yArgument);
 			
@@ -54,6 +55,7 @@ void Game::run(){
 						   obj->getYPosition() + obj->getHeight() > yArgument){
 
 							   obj->openMenu();
+							   currentMenu = obj->getMenu();
 						}
 					}
 				}else{
@@ -66,7 +68,10 @@ void Game::run(){
 						   obj->getYPosition()					  < yArgument &&
 						   obj->getXPosition() + obj->getWidth()  > xArgument &&
 						   obj->getYPosition() + obj->getHeight() > yArgument){
-							   obj->action();
+							   obj->action(this);
+							   if(currentMenu == 0){
+									break;
+							   }
 						}
 					}
 
@@ -84,12 +89,9 @@ void Game::draw(){
     player->draw(window);
 	int countRoomObjects = room->getRoomObjects().size();
 	
-	for(int i = 0; i < countRoomObjects; i++){
-		RoomObject* obj = room->getRoomObjects()[i];
-		if(obj->isMenuOpen()){
-			obj->drawMenu(window);
+		if(currentMenu){
+			currentMenu->draw(window);
 		}
-	}
 }
 
 void Game::init(){

@@ -9,7 +9,7 @@ class BuyButton
 public:
 	BuyButton(void);
 	~BuyButton(void);
-	void action();
+	void action(Game* game);
 private:
 
 };

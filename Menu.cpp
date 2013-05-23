@@ -9,14 +9,14 @@
 
 Menu::Menu() {
 	this->isopen = false;
-	addButton(new CloseButton(this));
+	//addButton(new CloseButton(this,0));
 }
 
 Menu::Menu(std::string file) {
 	this->isopen = false;
 	createSprite(file);
 	this->setFrameSize(SIZE_WINDOW_WIDTH_NORMAL,SIZE_WINDOW_HEIGHT_NORMAL);
-	addButton(new CloseButton(this));
+//	addButton(new CloseButton(this));
 }
 
 Menu::Menu(const Menu& orig) {
@@ -49,4 +49,13 @@ void Menu::addButton(Button* button){
 
 std::vector<Button*> Menu::getButtons(){
 	return buttons;
+}
+
+void Menu::draw(sf::RenderWindow* window){
+	DrawAble::draw(window);
+	for(int i = 0; i < this->getButtons().size();i++){
+		Button* button = this->getButtons()[i];
+		button->draw(window);
+	}
+
 }

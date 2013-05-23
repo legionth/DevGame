@@ -51,3 +51,7 @@ void RoomObject::drawMenu(sf::RenderWindow* window){
 		button->draw(window);
 	}
 }
+
+Menu* RoomObject::getMenu(){
+	return this->menu;
+}

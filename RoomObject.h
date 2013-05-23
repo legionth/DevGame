@@ -19,6 +19,7 @@ public:
     void openMenu();
     void closeMenu();
 	void setMenu(Menu* menu);
+	Menu* getMenu();
 	bool isMenuOpen();
 	int getId();
 	void setId(int);

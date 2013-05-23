@@ -161,11 +161,11 @@ void DrawAble::setYPosition(int y){
 }
 
 int DrawAble::getXPosition(){
-    return this->xPos;
+	return this->getSprite()->getPosition().x;
 }
 
 int DrawAble::getYPosition(){
-    return this->yPos;
+    return  this->getSprite()->getPosition().y;
 }
 
 void DrawAble::setPosition(int x, int y){
