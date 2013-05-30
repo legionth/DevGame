@@ -13,10 +13,12 @@
 #define	MENU_H
 #pragma once
 #include "CloseButton.h"
+#include "MenuButton.h"
 //#include "Button.h"
 
 
 class CloseButton;
+class MenuButton;
 class Menu : public DrawAble{
 public:
     Menu();
@@ -31,6 +33,7 @@ public:
 	void addButton(Button* button);
 	std::vector<Button*> getButtons();
 	void draw(sf::RenderWindow* window);
+	void arrangeButtons();
 private:
     bool isopen;
 

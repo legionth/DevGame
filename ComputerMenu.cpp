@@ -10,7 +10,10 @@ ComputerMenu::ComputerMenu(void)
 ComputerMenu::ComputerMenu(std::string file):Menu(file)
 {
 	this->devMenu = new DevMenu("menu_computer.png",this);
+	this->addButton(new MenuButton(new DevMenu("menu_dev.png",this),this,"button_dev_menu.png"));
 	this->addButton(new CloseButton(this,0));
+
+	arrangeButtons();
 }
 
 

@@ -28,6 +28,7 @@ public:
     void draw();
 	void init();
 	void setCurrentMenu(Menu* menu);
+	Player* getPlayer();
 private:
     sf::RenderWindow* window;
     Player* player;
@@ -35,6 +36,7 @@ private:
     int windowWidth;
     int windowHeight;
 	Menu* currentMenu;
+	sf::Clock buttonDelay;
 };
 
 #endif	/* GAME_H */

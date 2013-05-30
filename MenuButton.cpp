@@ -22,6 +22,7 @@ MenuButton::~MenuButton(void)
 
 void MenuButton::action(Game* game){
 	menu->open();
-	game->setCurrentMenu(menu);
 	prevMenu->close();
+	game->setCurrentMenu(menu);
+
 }

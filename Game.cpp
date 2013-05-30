@@ -17,6 +17,7 @@ Game::Game() {
     
     this->room = new Room();
 	this->currentMenu = 0;
+	buttonDelay.restart();
 
 }
 
@@ -36,13 +37,14 @@ void Game::run(){
             if(event.type == sf::Event::Closed){
                 window->close();
             }
+
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
 				event.mouseButton.x;
 				event.mouseButton.y;
                 int xArgument = sf::Mouse::getPosition(*window).x;
                 int yArgument = sf::Mouse::getPosition(*window).y;
 				
-				if(currentMenu == 0){
+				if(currentMenu == 0 && buttonDelay.getElapsedTime().asSeconds() > 0.25){
 					player->getSprite()->setPosition(xArgument,yArgument);
 			
 					int countRoomObjects = room->getRoomObjects().size();
@@ -56,11 +58,12 @@ void Game::run(){
 
 							   obj->openMenu();
 							   currentMenu = obj->getMenu();
+							   buttonDelay.restart();							
 						}
 					}
-				}else{
+				}else if(buttonDelay.getElapsedTime().asSeconds() > 0.25f){     // Button actions
 					int size = currentMenu->getButtons().size();
-
+					Menu* tmpMenu = currentMenu;
 					for(int i=0; i < size; i++){
 						Button* obj = currentMenu->getButtons()[i];
 
@@ -69,7 +72,8 @@ void Game::run(){
 						   obj->getXPosition() + obj->getWidth()  > xArgument &&
 						   obj->getYPosition() + obj->getHeight() > yArgument){
 							   obj->action(this);
-							   if(currentMenu == 0){
+							   buttonDelay.restart();
+							   if(currentMenu == 0 || tmpMenu != currentMenu){
 									break;
 							   }
 						}
@@ -102,4 +106,8 @@ void Game::init(){
 
 void Game::setCurrentMenu(Menu* menu){
 	this->currentMenu = menu;
+}
+
+Player* Game::getPlayer(){
+	return this->player;
 }
