@@ -1,15 +1,24 @@
 #include "Quest.h"
 
 
-Quest::Quest(int id,sf::String questName,Item* item,std::map<int,int> need, std::map<int,int> exp, int money)
+Quest::Quest(int id,std::string questName,Item* item,std::map<int,int> need, std::map<int,int> exp, int money)
 {
 	this->need = need;
 	this->exp = exp;
-	this->questName = questName;
+	this->questName.setString(questName);
 	this->item = item;
 	this->id = id;
 	this->completed = false;
 	this->money = money;
+	this->createSprite("button_quest.png");
+	this->setFrameSize(SIZE_QUEST_BUTTON_WIDTH_NORMAL,SIZE_QUEST_BUTTON_HEIGHT_NORMAL);
+
+	this->need[MATH_ID]			= 0;
+	this->need[ALGORITHM_ID]	= 0;
+	this->need[PROGRAMMING_ID]  = 0;
+	this->need[DESIGN_ID]		= 0;
+	this->need[DATABASES_ID]	= 0;
+	this->need[ELECTRONICS_ID]	= 0;
 }
 
 
@@ -18,9 +27,9 @@ Quest::~Quest(void)
 }
 
 void Quest::action(Game* game){
-	if(isAvaible(game) && isVisible()){
+//	if(isAvaible(game) && isVisible()){
 
-	}
+	//}
 }
 
 void Quest::hide(){
@@ -57,11 +66,11 @@ bool Quest::isVisible(){
 	return this->visible;
 }
 
-void Quest::setDescription(sf::String description){
-	this->description = description;
+void Quest::setDescription(std::string description){
+	this->description.setString(description);
 }
 
-sf::String Quest::getQuestDescription(){
+sf::Text Quest::getQuestDescription(){
 	return this->description;
 }
 
@@ -72,4 +81,10 @@ bool Quest::isComplete(){
 
 int Quest::getMoney(){
 	return this->money;
+}
+
+void Quest::draw(sf::RenderWindow* window){
+	DrawAble::draw(window);
+	window->draw(this->description);
+	window->draw(this->questName);
 }

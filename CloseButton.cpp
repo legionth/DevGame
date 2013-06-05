@@ -26,7 +26,7 @@ void CloseButton::setPrevMenu(Menu* menu){
 
 CloseButton::~CloseButton(void)
 {
-	delete menu;
+	//delete menu;
 }
 
 void CloseButton::action(Game* game){

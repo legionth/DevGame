@@ -8,10 +8,10 @@
 * Item to Inventory
 * Shoul work for all Menu's	@TODO test this :P
 */
-class Quest
+class Quest : public Button
 {
 public:
-	Quest(int id,sf::String questName,Item* item,std::map<int,int> need, std::map<int,int> exp,int money=0);
+	Quest(int id,std::string questName,Item* item,std::map<int,int> need, std::map<int,int> exp,int money=0);
 	~Quest(void);
 
 	void action(Game* game);
@@ -26,18 +26,19 @@ public:
 	void complete();
 	Item* getItem();
 
-	void setDescription(sf::String description);
-	sf::String getQuestDescription();
+	void setDescription(std::string description);
+	sf::Text getQuestDescription();
 
 	int getId();
 
 	int getMoney();
+	void draw(sf::RenderWindow* window);
 private:
 	int id;
 	bool visible;										// If this quest is shown in Menu
 	Item* item;
-	sf::String questName;
-	sf::String description;
+	sf::Text questName;
+	sf::Text description;
 
 	std::map<int,int> need;								// Need Attributes by Player
 	std::map<int,int> exp;								// Experience reward for completed this quest

@@ -12,12 +12,17 @@
 class Item : public DrawAble{
 public:
     Item();
+	Item(int id);
+	Item(int id,std::string toolTip);
     Item(const Item& orig);
     virtual ~Item();
     int getId();
     void setId(int i);
+	sf::Text getToolTip();
+	void setToolTip(std::string toolTip);
 private:
     int id;
+	sf::Text toolTip;
 };
 
 #endif	/* ITEM_H */
