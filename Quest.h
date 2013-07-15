@@ -27,7 +27,7 @@ public:
 	Item* getItem();
 
 	void setDescription(std::string description);
-	sf::Text getQuestDescription();
+	sf::Text* getQuestDescription();
 
 	int getId();
 
@@ -37,8 +37,8 @@ private:
 	int id;
 	bool visible;										// If this quest is shown in Menu
 	Item* item;
-	sf::Text questName;
-	sf::Text description;
+	sf::Text *questName;
+	sf::Text *description;
 
 	std::map<int,int> need;								// Need Attributes by Player
 	std::map<int,int> exp;								// Experience reward for completed this quest

@@ -15,7 +15,8 @@ const int MAX_ITEMS_INVENTORY = 10;
 
 const enum ROOM_IDS{ 
 	COMPUTER = 1,
-	BOOKSHELF = 2
+	BOOKSHELF = 2,
+	BOX = 3
 };
 
 /*

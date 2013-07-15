@@ -13,6 +13,7 @@
 #include "Player.h"
 #include "Room.h"
 #include "Computer.h"
+#include "Box.h"
 #include "Consts.h"
 
 #ifndef GAME_H

@@ -5,7 +5,10 @@ Quest::Quest(int id,std::string questName,Item* item,std::map<int,int> need, std
 {
 	this->need = need;
 	this->exp = exp;
-	this->questName.setString(questName);
+	this->questName = new sf::Text();
+	this->questName->setString("Bla");
+	this->description = new sf::Text();
+	this->description->setString("Blawwa");
 	this->item = item;
 	this->id = id;
 	this->completed = false;
@@ -19,6 +22,21 @@ Quest::Quest(int id,std::string questName,Item* item,std::map<int,int> need, std
 	this->need[DESIGN_ID]		= 0;
 	this->need[DATABASES_ID]	= 0;
 	this->need[ELECTRONICS_ID]	= 0;
+
+	sf::Font *font = new sf::Font();
+
+	if (!font->loadFromFile("C:\\Windows\\Fonts\\arial.ttf"))
+	{
+		std::cout<<"Font couldn't be loaded"<<std::endl;
+	}else{
+		//this->description->setColor(sf::Color::Red);
+		//this->description->setFont(*font);
+		//this->description->setCharacterSize(16);
+	
+		this->questName->setColor(sf::Color::Red);
+		this->questName->setFont(*font);
+		this->questName->setCharacterSize(32);
+	}
 }
 
 
@@ -67,10 +85,10 @@ bool Quest::isVisible(){
 }
 
 void Quest::setDescription(std::string description){
-	this->description.setString(description);
+	this->description->setString(description);
 }
 
-sf::Text Quest::getQuestDescription(){
+sf::Text* Quest::getQuestDescription(){
 	return this->description;
 }
 
@@ -84,7 +102,11 @@ int Quest::getMoney(){
 }
 
 void Quest::draw(sf::RenderWindow* window){
-	DrawAble::draw(window);
-	window->draw(this->description);
-	window->draw(this->questName);
+	//this->questName->setPosition(this->getXPosition()+16,this->getYPosition()+16);
+	//this->description->setPosition(this->getXPosition()+16,this->getYPosition()+32);
+
+	window->draw(*this->questName);
+	window->draw(*this->getSprite());
+	window->draw(*this->description);
+	window->draw(*this->questName);
 }

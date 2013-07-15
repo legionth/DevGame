@@ -33,10 +33,10 @@ void Game::run(){
     init();
 	while(window->isOpen()){
         sf::Event event;
+
         while(window->pollEvent(event)){
             if(event.type == sf::Event::Closed){
                 window->close();
-				return;
             }
 
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
@@ -56,8 +56,11 @@ void Game::run(){
 						   obj->getYPosition()					  < yArgument &&
 						   obj->getXPosition() + obj->getWidth()  > xArgument &&
 						   obj->getYPosition() + obj->getHeight() > yArgument){
+							   
+							   if(obj->getMenu() != 0){
+									obj->openMenu();
+							   }
 
-							   obj->openMenu();
 							   currentMenu = obj->getMenu();
 							   buttonDelay.restart();							
 						}
@@ -83,9 +86,11 @@ void Game::run(){
 				}
             }
         }
-        window->clear();
-        this->draw();
-        window->display();
+		if(window->isOpen()){
+			window->clear();
+			this->draw();
+			window->display();
+		}
     }
 }
 
@@ -94,15 +99,20 @@ void Game::draw(){
     player->draw(window);
 	int countRoomObjects = room->getRoomObjects().size();
 	
-		if(currentMenu){
-			currentMenu->draw(window);
-		}
+	if(currentMenu){
+		currentMenu->draw(window);
+	}
 }
 
 void Game::init(){
 	Computer *computer = new Computer();
+	Box *box = new Box();
+
 	computer->setPosition(this->windowWidth/2 - computer->getWidth()/2,0);
+	box->setPosition(this->windowWidth - box->getWidth(),this->windowHeight/2);
+
 	room->addRoomObject(computer);
+	room->addRoomObject(box);
 }
 
 void Game::setCurrentMenu(Menu* menu){
