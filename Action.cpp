@@ -1,4 +1,5 @@
 #include "Action.h"
+#include "Game.h"
 
 
 Action::Action(void)
@@ -17,4 +18,8 @@ void Action::execute(Game* game){
 		game->setCurrentMenu(this->menu);
 	}
 
+}
+
+void Action::setName(sf::String name){
+	this->name = name;
 }

@@ -10,6 +10,7 @@
 	#include "SFML/Graphics.hpp"
 #endif
 
+#pragma once
 #include "Player.h"
 #include "Room.h"
 #include "Computer.h"
@@ -29,6 +30,7 @@ public:
     void draw();
 	void init();
 	void setCurrentMenu(Menu* menu);
+	Box* getBox();
 	Player* getPlayer();
 private:
     sf::RenderWindow* window;
@@ -38,6 +40,7 @@ private:
     int windowHeight;
 	Menu* currentMenu;
 	sf::Clock buttonDelay;
+	Box* box;
 };
 
 #endif	/* GAME_H */

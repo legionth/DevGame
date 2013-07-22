@@ -27,6 +27,8 @@ Game::Game(const Game& orig) {
 Game::~Game() {
     delete window;
     delete player;
+	delete room;
+	delete currentMenu;
 }
 
 void Game::run(){
@@ -37,6 +39,7 @@ void Game::run(){
         while(window->pollEvent(event)){
             if(event.type == sf::Event::Closed){
                 window->close();
+				return;
             }
 
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
@@ -113,6 +116,7 @@ void Game::init(){
 
 	room->addRoomObject(computer);
 	room->addRoomObject(box);
+	this->box = box;
 }
 
 void Game::setCurrentMenu(Menu* menu){
@@ -121,4 +125,8 @@ void Game::setCurrentMenu(Menu* menu){
 
 Player* Game::getPlayer(){
 	return this->player;
+}
+
+Box* Game::getBox(){
+	return this->box;
 }

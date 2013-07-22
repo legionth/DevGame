@@ -32,6 +32,8 @@ public:
     void setElectronics(int electronics);
     
     void move(int x, int y);
+	int getMoney();
+	void setMoney(int i);
 private:
     int math;
     int algorithm;
@@ -39,6 +41,8 @@ private:
     int design;
     int databases;
     int electronics;
+
+	int money;
     
 };
 

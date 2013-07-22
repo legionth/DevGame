@@ -1,6 +1,6 @@
 #pragma once
 #include "Menu.h"
-#include "Game.h"
+class Game;
 class Action
 {
 public:
@@ -8,6 +8,7 @@ public:
 	Action(Menu* menu);
 	~Action(void);
 	void execute(Game* game);
+	void setName(sf::String name);
 private:
 	Menu* menu;
 	sf::String name;

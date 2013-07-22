@@ -20,9 +20,19 @@ public:
     void setId(int i);
 	sf::Text getToolTip();
 	void setToolTip(std::string toolTip);
+
+	int getSellPrice();
+	void setSellPrice(int i);
+	int getBuyPrice();
+	void setBuyPrice(int i);
+	bool isSellAble();
+	void setSellAble(bool b);
 private:
     int id;
 	sf::Text toolTip;
+	int sellPrice;
+	int buyPrice;
+	bool sellAble;
 };
 
 #endif	/* ITEM_H */
