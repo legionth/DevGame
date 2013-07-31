@@ -12,6 +12,8 @@ public:
 	~BoxMenu(void);
 	void sell(Game* game);
 	std::vector<ItemHoldButton*> getItemButtons();
+	void addItemButton(ItemHoldButton* button);
+	void draw(sf::RenderWindow* window);
 private:
 	std::vector<ItemHoldButton*> itemButtons;
 };

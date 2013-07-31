@@ -1,7 +1,7 @@
 #include "DevMenu.h"
 #include "Quest.h"
 
-DevMenu::DevMenu(std::string file,Menu* prevMenu):Menu(file)
+DevMenu::DevMenu(std::string file,Menu* prevMenu):Menu(file,MENU_DEV)
 {
 	std::map<int,int> need;
 	need[MATH_ID] = 0;

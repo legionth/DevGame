@@ -1,8 +1,9 @@
 #pragma once
-#include "PopUpMenu.h"
 #include "Item.h"
+#include "Button.h"
 
 class Game;
+class PopUpMenu;
 class ItemHoldButton : public Button
 {
 public:

@@ -7,7 +7,9 @@ Box::Box(void)
 	setId(ROOM_IDS::BOX);
 	createSprite("box.png");
 	setFrameSize(64,64);
-	setMenu(new BoxMenu("menu_box.png"));
+	BoxMenu* menu = new BoxMenu("menu_box.png");
+	setBoxMenu(menu);
+	setMenu(menu);
 }
 
 

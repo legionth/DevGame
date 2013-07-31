@@ -5,9 +5,11 @@
  * Created on 10. April 2013, 11:14
  */
 
+#pragma once
 #include "Menu.h"
 #include "Item.h"
 #include "Consts.h"
+#include "ItemHoldButton.h"
 #ifndef INVENTORY_H
 #define	INVENTORY_H
 
@@ -23,8 +25,10 @@ public:
     int getCurrentSite();
     void nextSite();
     void previousSite();
+	void draw(sf::RenderWindow* window);
+	void addItemButton(ItemHoldButton* button);
 private:
-    std::vector<Item*> items;
+	std::vector<ItemHoldButton*> holderButtons;
     
     // currently displayed site
     int currentSite;

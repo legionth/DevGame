@@ -6,6 +6,7 @@
  */
 
 #include "Player.h"
+#include "Inventory.h"
 
 Player::Player() {
     setAlgorithm(0);
@@ -17,6 +18,7 @@ Player::Player() {
     setFrameSize(256,256);
     playAnimation(0,4);
 	this->money = 0;
+	this->inventory = new Inventory();
 }
 
 Player::Player(const Player& orig) {
@@ -83,4 +85,12 @@ int Player::getMoney(){
 
 void Player::setMoney(int i){
 	this->money = i;
+}
+
+Inventory* Player::getInventory(){
+	return this->inventory;
+}
+
+void Player::setInventory(Inventory* inventory){
+	this->inventory = inventory;
 }

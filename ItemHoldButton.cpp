@@ -1,9 +1,11 @@
 #include "ItemHoldButton.h"
 #include "Game.h"
+#include "PopUpMenu.h"
 
 ItemHoldButton::ItemHoldButton(void)
 {
 	this->item = 0;
+	this->popUpMenu = 0;
 	this->createSprite("button_holder.png");
 	setFrameSize(SIZE_HOLDER_BUTTON_WIDTH_NORMAL,SIZE_HOLDER_BUTTON_HEIGHT_NORMAL);
 }

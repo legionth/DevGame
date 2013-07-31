@@ -6,6 +6,8 @@
  */
 
 #include "Game.h"
+#include "BoxMenu.h"
+#include "Inventory.h"
 
 Game::Game() {
 	this->windowWidth = SIZE_WINDOW_WIDTH_NORMAL;
@@ -41,8 +43,27 @@ void Game::run(){
                 window->close();
 				return;
             }
-
-            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Tab) && buttonDelay.getElapsedTime().asSeconds() > 0.25){
+			//	Inventory* inv = this->player->getInventory();
+				std::cout<<"this->currentMenu"<<this->currentMenu<<std::endl;
+				if(this->currentMenu != 0 && this->currentMenu->getId() == MENU_INVENTORY){
+					currentMenu->close();
+					currentMenu = 0;
+					buttonDelay.restart();
+				}
+				else{
+					//Menu* r = reinterpret_cast<Menu*>(this->player->getInventory());
+					//currentMenu = (Menu*)this->player->getInventory();
+					setCurrentMenu((Menu*)this->player->getInventory());
+					std::cout<<"currentMenu in inv="<<currentMenu<<std::endl;
+					std::cout<<"id="<<currentMenu->getId()<<std::endl;
+					buttonDelay.restart();
+					//currentMenu->setId(MENU_INVENTORY);
+					//std::cout<<currentMenu<<std::endl;
+					//currentMenu->open();
+				}
+			}
+            else if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
 				event.mouseButton.x;
 				event.mouseButton.y;
                 int xArgument = sf::Mouse::getPosition(*window).x;
@@ -102,8 +123,17 @@ void Game::draw(){
     player->draw(window);
 	int countRoomObjects = room->getRoomObjects().size();
 	
-	if(currentMenu){
-		currentMenu->draw(window);
+	if(currentMenu != 0){                         //Dran denken #includen der *.h Dateien
+		if(currentMenu->getId() == MENU_BOX){
+			BoxMenu* r = reinterpret_cast<BoxMenu*>(currentMenu);
+			r->draw(window);
+		}
+		else if(currentMenu->getId() == MENU_INVENTORY){
+			Inventory* r = reinterpret_cast<Inventory*>(currentMenu);
+			r->draw(window);
+		}else{
+			currentMenu->draw(window);
+		}
 	}
 }
 

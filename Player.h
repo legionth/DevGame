@@ -7,10 +7,12 @@
 
 #ifndef PLAYER_H
 #define	PLAYER_H
+#pragma once 
 #include "DrawAble.h"
 #include "Room.h"
 #include <SFML/Graphics.hpp>
 
+class Inventory;
 class Player : public DrawAble{
 public:
     Player();
@@ -34,6 +36,8 @@ public:
     void move(int x, int y);
 	int getMoney();
 	void setMoney(int i);
+	Inventory* getInventory();
+	void setInventory(Inventory* inventory);
 private:
     int math;
     int algorithm;
@@ -43,7 +47,7 @@ private:
     int electronics;
 
 	int money;
-    
+	Inventory* inventory;    
 };
 
 #endif	/* PLAYER_H */
