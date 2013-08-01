@@ -55,7 +55,7 @@ std::vector<Button*> Menu::getButtons(){
 
 void Menu::draw(sf::RenderWindow* window){
 	DrawAble::draw(window);
-	std::cout<<"Menu::draw"<<std::endl;
+
 	for(int i = 0; i < this->getButtons().size();i++){
 		Button* button = this->getButtons()[i];
 		button->draw(window);

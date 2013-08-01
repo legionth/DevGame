@@ -6,6 +6,7 @@
  */
 
 #include "DrawAble.h"
+#include "Consts.h"
 #ifndef ITEM_H
 #define	ITEM_H
 

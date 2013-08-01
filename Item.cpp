@@ -15,6 +15,20 @@ Item::Item(const Item& orig) {
 
 Item::Item(int id){
 	this->id = id;
+	this->sellPrice = 0;
+	this->buyPrice = 0;
+	this->sellAble = true;
+
+	switch(id){
+	case ITEM_BOOK_HELLO_WORLD:
+		this->createSprite("book_hello_world.png");
+		break;
+	case ITEM_BOOK_CALCULATOR:
+		this->createSprite("book_calculator.png");
+		break;
+	}
+
+	this->setFrameSize(SIZE_ITEM_WIDTH_NORMAL,SIZE_ITEM_HEIGHT_NORMAL);
 }
 
 Item::Item(int id,std::string toolTip){
