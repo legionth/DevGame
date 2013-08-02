@@ -32,7 +32,6 @@ public:
 	int getId();
 
 	int getMoney();
-	void draw(sf::RenderWindow* window);
 private:
 	int id;
 	bool visible;										// If this quest is shown in Menu

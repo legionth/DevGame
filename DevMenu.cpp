@@ -23,13 +23,38 @@ DevMenu::DevMenu(std::string file,Menu* prevMenu):Menu(file,MENU_DEV)
 	Quest *quest = new Quest(QUEST_HELLO_WORLD,"HelloWorld",0,need,exp,0);
 	
 	quest->setDescription(description);
-	this->addButton(quest);
+	this->addQuest(quest);
 
-	this->addButton(new CloseButton(this,prevMenu));
-	arrangeButtons();
+	CloseButton* closeButton = new CloseButton(this,prevMenu);
+	closeButton->setPosition(SIZE_WINDOW_WIDTH_NORMAL - SIZE_BUTTON_WIDTH_NORMAL, 
+							 SIZE_WINDOW_HEIGHT_NORMAL- SIZE_BUTTON_HEIGHT_NORMAL);
+	
+	this->addButton(closeButton);
+
+	
 }
 
 
 DevMenu::~DevMenu(void)
 {
+	this->quests.clear();
+}
+
+void DevMenu::addQuest(Quest* quest){
+	if(quests.size() != 0){
+		quest->setPosition(quests[quests.size()-1]->getXPosition(),
+			               quests[quests.size()-1]->getYPosition()+SIZE_QUEST_BUTTON_HEIGHT_NORMAL);
+	}else{
+		quest->setPosition(128,0);
+	}
+
+	this->quests.push_back(quest);
+}
+
+void DevMenu::draw(sf::RenderWindow* window){
+	Menu::draw(window);
+
+	for(int i = 0; i < quests.size(); i++){
+		window->draw(*quests[i]->getSprite());
+	}
 }

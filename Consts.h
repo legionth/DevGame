@@ -38,6 +38,8 @@ const int SIZE_HOLDER_BUTTON_HEIGHT_NORMAL	= 64;
 const int SIZE_ITEM_WIDTH_NORMAL			= 32;
 const int SIZE_ITEM_HEIGHT_NORMAL			= 32;
 
+const int FONT_SIZE_NORMAL					= 16;
+
 const enum ATTR_IDS{
 	MATH_ID				= 0,
 	ALGORITHM_ID		= 1,

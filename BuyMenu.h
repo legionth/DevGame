@@ -10,5 +10,9 @@ public:
 	void draw(sf::RenderWindow* window);
 private:
 	std::vector<ItemHoldButton*> itemHolderButtons;
+	std::vector<sf::Text*> text;
+	std::vector<sf::Text*> price;
+
+	sf::Text* getText(int id);
 };
 

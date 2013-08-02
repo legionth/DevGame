@@ -8,6 +8,7 @@
 #include "Game.h"
 #include "BoxMenu.h"
 #include "Inventory.h"
+#include "DevMenu.h"
 
 Game::Game() {
 	this->windowWidth = SIZE_WINDOW_WIDTH_NORMAL;
@@ -126,6 +127,10 @@ void Game::draw(){
 		}
 		else if(currentMenu->getId() == MENU_BUY){
 			BuyMenu* r = reinterpret_cast<BuyMenu*>(currentMenu);
+			r->draw(window);
+		}
+		else if(currentMenu->getId() == MENU_DEV){
+			DevMenu* r = reinterpret_cast<DevMenu*>(currentMenu);
 			r->draw(window);
 		}
 		

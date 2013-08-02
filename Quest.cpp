@@ -32,10 +32,8 @@ Quest::Quest(int id,std::string questName,Item* item,std::map<int,int> need, std
 		//this->description->setColor(sf::Color::Red);
 		//this->description->setFont(*font);
 		//this->description->setCharacterSize(16);
-	
-		this->questName->setColor(sf::Color::Red);
-		this->questName->setFont(*font);
-		this->questName->setCharacterSize(32);
+		this->questName->setString("Blub");
+		this->questName->setPosition(this->getXPosition(),this->getYPosition());
 	}
 }
 
@@ -99,14 +97,4 @@ bool Quest::isComplete(){
 
 int Quest::getMoney(){
 	return this->money;
-}
-
-void Quest::draw(sf::RenderWindow* window){
-	//this->questName->setPosition(this->getXPosition()+16,this->getYPosition()+16);
-	//this->description->setPosition(this->getXPosition()+16,this->getYPosition()+32);
-
-	window->draw(*this->questName);
-	window->draw(*this->getSprite());
-	window->draw(*this->description);
-	window->draw(*this->questName);
 }
