@@ -1,5 +1,6 @@
 #pragma once
-#include "roomobject.h"
+#include "RoomObject.h"
+#include "Consts.h"
 class Box :
 	public RoomObject
 {

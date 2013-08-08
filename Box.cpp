@@ -1,9 +1,8 @@
 #include "Box.h"
 
-
 Box::Box(void)
 {
-	setId(ROOM_IDS::BOX);
+	setId(3);
 	createSprite("box.png");
 	setFrameSize(64,64);
 	setMenu(0);
