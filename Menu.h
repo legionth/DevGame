@@ -22,7 +22,7 @@ class MenuButton;
 class Menu : public DrawAble{
 public:
     Menu();
-	Menu(std::string file);
+	Menu(std::string file,int id);
     Menu(const Menu& orig);
     virtual ~Menu();
     void open();
@@ -34,9 +34,11 @@ public:
 	std::vector<Button*> getButtons();
 	void draw(sf::RenderWindow* window);
 	void arrangeButtons();
+	int getId();
+	void setId(int id);
 private:
     bool isopen;
-
+	int id;
 	std::vector<Button*> buttons;
 };
 

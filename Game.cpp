@@ -6,6 +6,9 @@
  */
 
 #include "Game.h"
+#include "BoxMenu.h"
+#include "Inventory.h"
+#include "DevMenu.h"
 
 Game::Game() {
 	this->windowWidth = SIZE_WINDOW_WIDTH_NORMAL;
@@ -27,6 +30,8 @@ Game::Game(const Game& orig) {
 Game::~Game() {
     delete window;
     delete player;
+	delete room;
+	delete currentMenu;
 }
 
 void Game::run(){
@@ -37,9 +42,21 @@ void Game::run(){
         while(window->pollEvent(event)){
             if(event.type == sf::Event::Closed){
                 window->close();
+				return;
             }
-
-            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Tab) && buttonDelay.getElapsedTime().asSeconds() > 0.25){
+			//	Inventory* inv = this->player->getInventory();
+				if(this->currentMenu != 0 && this->currentMenu->getId() == MENU_INVENTORY){
+					currentMenu->close();
+					currentMenu = 0;
+					buttonDelay.restart();
+				}
+				else{
+					setCurrentMenu((Menu*)this->player->getInventory());
+					buttonDelay.restart();
+				}
+			}
+            else if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
 				event.mouseButton.x;
 				event.mouseButton.y;
                 int xArgument = sf::Mouse::getPosition(*window).x;
@@ -99,8 +116,27 @@ void Game::draw(){
     player->draw(window);
 	int countRoomObjects = room->getRoomObjects().size();
 	
-	if(currentMenu){
-		currentMenu->draw(window);
+	if(currentMenu != 0){                         //Dran denken #includen der *.h Dateien
+		if(currentMenu->getId() == MENU_BOX){
+			BoxMenu* r = reinterpret_cast<BoxMenu*>(currentMenu);
+			r->draw(window);
+		}
+		else if(currentMenu->getId() == MENU_INVENTORY){
+			Inventory* r = reinterpret_cast<Inventory*>(currentMenu);
+			r->draw(window);
+		}
+		else if(currentMenu->getId() == MENU_BUY){
+			BuyMenu* r = reinterpret_cast<BuyMenu*>(currentMenu);
+			r->draw(window);
+		}
+		else if(currentMenu->getId() == MENU_DEV){
+			DevMenu* r = reinterpret_cast<DevMenu*>(currentMenu);
+			r->draw(window);
+		}
+		
+		else{
+			currentMenu->draw(window);
+		}
 	}
 }
 
@@ -113,6 +149,7 @@ void Game::init(){
 
 	room->addRoomObject(computer);
 	room->addRoomObject(box);
+	this->box = box;
 }
 
 void Game::setCurrentMenu(Menu* menu){
@@ -121,4 +158,8 @@ void Game::setCurrentMenu(Menu* menu){
 
 Player* Game::getPlayer(){
 	return this->player;
+}
+
+Box* Game::getBox(){
+	return this->box;
 }

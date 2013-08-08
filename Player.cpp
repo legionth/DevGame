@@ -6,6 +6,7 @@
  */
 
 #include "Player.h"
+#include "Inventory.h"
 
 Player::Player() {
     setAlgorithm(0);
@@ -16,6 +17,8 @@ Player::Player() {
     createSprite("player.png");
     setFrameSize(256,256);
     playAnimation(0,4);
+	this->money = 0;
+	this->inventory = new Inventory();
 }
 
 Player::Player(const Player& orig) {
@@ -74,4 +77,20 @@ void Player::setProgramming(int i){
 
 void Player::move(int x, int y){
     getSprite()->move(x,y);
+}
+
+int Player::getMoney(){
+	return this->money;
+}
+
+void Player::setMoney(int i){
+	this->money = i;
+}
+
+Inventory* Player::getInventory(){
+	return this->inventory;
+}
+
+void Player::setInventory(Inventory* inventory){
+	this->inventory = inventory;
 }

@@ -7,10 +7,12 @@ ComputerMenu::ComputerMenu(void)
 	this->addButton(new CloseButton(this,0));
 }
 
-ComputerMenu::ComputerMenu(std::string file):Menu(file)
+ComputerMenu::ComputerMenu(std::string file):Menu(file,MENU_COMPUTER)
 {
 	this->devMenu = new DevMenu("menu_computer.png",this);
-	this->addButton(new MenuButton(new DevMenu("menu_dev.png",this),this,"button_dev_menu.png"));
+	this->buyMenu = new BuyMenu(this);
+	this->addButton(new MenuButton(this->devMenu,this,"button_dev_menu.png"));
+	this->addButton(new MenuButton(this->buyMenu,this,"button_buy_menu.png"));
 	this->addButton(new CloseButton(this,0));
 
 	arrangeButtons();
