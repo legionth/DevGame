@@ -12,6 +12,7 @@ BuyMenu::BuyMenu(Menu* prevMenu):Menu("menu_buy.png",MENU_BUY)
 {
 	int y = 0;
 	int x = 1;
+
 	for(int i = 1; i <= 2; i++){
 		ItemHoldButton* holder = new ItemHoldButton();
 		holder->setPosition(SIZE_HOLDER_BUTTON_WIDTH_NORMAL,
