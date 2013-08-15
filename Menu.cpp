@@ -66,7 +66,8 @@ void Menu::draw(sf::RenderWindow* window){
 
 void Menu::arrangeButtons(){
 	for(int i = 0; i < this->buttons.size(); i++){
-		this->buttons[i]->setPosition(SIZE_WINDOW_WIDTH_NORMAL/2 - this->buttons[i]->getFrameWidth()/2,this->buttons[i]->getFrameHeight()*i +8);
+		this->buttons[i]->setPosition(SIZE_WINDOW_WIDTH_NORMAL/2 - this->buttons[i]->getFrameWidth()/2,
+                                              this->buttons[i]->getFrameHeight()*i +8);
 	}
 }
 

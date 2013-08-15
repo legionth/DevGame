@@ -133,7 +133,6 @@ void Game::draw(){
 			DevMenu* r = reinterpret_cast<DevMenu*>(currentMenu);
 			r->draw(window);
 		}
-		
 		else{
 			currentMenu->draw(window);
 		}

@@ -38,6 +38,7 @@ const int SIZE_HOLDER_BUTTON_HEIGHT_NORMAL	= 64;
 const int SIZE_ITEM_WIDTH_NORMAL			= 32;
 const int SIZE_ITEM_HEIGHT_NORMAL			= 32;
 
+const int FONT_SIZE_SMALL					= 12;
 const int FONT_SIZE_NORMAL					= 16;
 
 enum ATTR_IDS{
@@ -73,6 +74,8 @@ enum ITEM_BOOK_IDS{
 	ITEM_BOOK_CALCULATOR
 };
 
+
+const std::string FONT_STANDARD = "DIGITALDREAM.TTF";//"arial.ttf";
 
 #endif
 

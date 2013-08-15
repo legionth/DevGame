@@ -29,7 +29,7 @@ BuyMenu::BuyMenu(Menu* prevMenu):Menu("menu_buy.png",MENU_BUY)
                 sf::Text* p = new sf::Text();
                 p->setString("Price: " + convertInt(item->getBuyPrice()));      //Must be done like that
                 
-                if(!font->loadFromFile("arial.ttf")){
+                if(!font->loadFromFile(FONT_STANDARD)){
                     std::cout<<"FAILED: loading font in BuyMenu"<<std::endl;
                 }else{
                     p->setFont(*font); 
