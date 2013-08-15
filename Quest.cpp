@@ -16,9 +16,9 @@ Quest::Quest(int id,std::string questName,Item* item,std::map<int,int> need, std
 	this->createSprite("button_quest.png");
 	this->setFrameSize(SIZE_QUEST_BUTTON_WIDTH_NORMAL,SIZE_QUEST_BUTTON_HEIGHT_NORMAL);
 
-	this->need[MATH_ID]			= 0;
+	this->need[MATH_ID]		= 0;
 	this->need[ALGORITHM_ID]	= 0;
-	this->need[PROGRAMMING_ID]  = 0;
+	this->need[PROGRAMMING_ID]      = 0;
 	this->need[DESIGN_ID]		= 0;
 	this->need[DATABASES_ID]	= 0;
 	this->need[ELECTRONICS_ID]	= 0;
@@ -27,8 +27,12 @@ Quest::Quest(int id,std::string questName,Item* item,std::map<int,int> need, std
 
 	if (!font->loadFromFile("C:\\Windows\\Fonts\\arial.ttf"))
 	{
-		std::cout<<"Font couldn't be loaded"<<std::endl;
-	}else{
+                std::cout<<"Font couldn't be loaded"<<std::endl;
+	}
+        else if(!font->loadFromFile("arial.ttf")){
+                std::cout<<"Font couldn't be loaded"<<std::endl;
+        }
+        else{
 		//this->description->setColor(sf::Color::Red);
 		//this->description->setFont(*font);
 		//this->description->setCharacterSize(16);

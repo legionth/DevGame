@@ -14,9 +14,9 @@
 const int MAX_ITEMS_INVENTORY = 10;
 
 enum ROOM_IDS{ 
-	COMPUTER = 1,
+	COMPUTER  = 1,
 	BOOKSHELF = 2,
-	BOX = 3
+	BOX       = 3
 };
 
 /*
@@ -41,19 +41,25 @@ const int SIZE_ITEM_HEIGHT_NORMAL			= 32;
 const int FONT_SIZE_NORMAL					= 16;
 
 enum ATTR_IDS{
-	MATH_ID				= 0,
+	MATH_ID			= 0,
 	ALGORITHM_ID		= 1,
 	PROGRAMMING_ID		= 2,
-	DESIGN_ID			= 3,
+	DESIGN_ID		= 3,
 	DATABASES_ID		= 4,
 	ELECTRONICS_ID		= 5
 };
 
+<<<<<<< HEAD
 enum QUEST_IDS{
+	QUEST_HELLO_WORLD,
+	QUEST_CALCULATOR
+=======
+const enum QUEST_IDS{
 	QUEST_HELLO_WORLD = 0,
 	QUEST_CALCULATOR = 1
 
 };
+>>>>>>> 760687973b3df894f9c91cf6f8e40cf891de39b2
 
 enum MENU_IDS{
 	MENU_COMPUTER,
