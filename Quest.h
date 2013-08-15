@@ -11,13 +11,14 @@
 class Quest : public Button
 {
 public:
-	Quest(int id,std::string questName,Item* item,std::map<int,int> need, std::map<int,int> exp,int money=0);
+	Quest(int id,Item* item,std::map<int,int> need, std::map<int,int> exp,int money=0,int x=0,int y=0);
 	~Quest(void);
 
 	void action(Game* game);
 	void hide();
 	void show();
 	void setVisible(bool visible);
+        void setPosition(int x, int y);
 
 	bool isAvaible(Game* game);
 	bool isVisible();
@@ -32,6 +33,7 @@ public:
 	int getId();
 
 	int getMoney();
+        void draw(sf::RenderWindow* window);
 private:
 	int id;
 	bool visible;										// If this quest is shown in Menu
@@ -43,5 +45,7 @@ private:
 	std::map<int,int> exp;								// Experience reward for completed this quest
 	bool completed;										// Completed Quest
 	int money;
+        sf::Text* getNameText();
+        sf::Text* getDescText();
 };
 

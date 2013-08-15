@@ -1,7 +1,12 @@
 #pragma once
+<<<<<<< HEAD
 #include "RoomObject.h"
+#include "Consts.h"
+=======
+#include "roomobject.h"
 
 class BoxMenu;
+>>>>>>> 760687973b3df894f9c91cf6f8e40cf891de39b2
 class Box :
 	public RoomObject
 {

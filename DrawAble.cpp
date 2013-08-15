@@ -117,9 +117,13 @@ void DrawAble::setFrameRect(int frame){
  * @return cutted FrameRect from Texture 
  */
 sf::IntRect DrawAble::getFrameRect(int frame){
-    unsigned int width = (getSprite()->getTexture()->getSize().x / getFrameWidth());
-    unsigned int height = (getSprite()->getTexture()->getSize().y / getFrameHeight());
-
+    #ifdef _WIN32
+        unsigned int width = (getSprite()->getTexture()->getSize().x / getFrameWidth());
+        unsigned int height = (getSprite()->getTexture()->getSize().y / getFrameHeight());
+    #else        
+        unsigned int width = (getSprite()->getTexture()->getSize().x/ getFrameWidth());
+        unsigned int height = (getSprite()->getTexture()->getSize().y / getFrameHeight());
+    #endif
     int tileX = frame % width;
     int tileY = frame % height;
 

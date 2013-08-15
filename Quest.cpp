@@ -1,39 +1,46 @@
 #include "Quest.h"
 
 
-Quest::Quest(int id,std::string questName,Item* item,std::map<int,int> need, std::map<int,int> exp, int money)
+Quest::Quest(int id,Item* item,std::map<int,int> need, std::map<int,int> exp, int money,int x ,int y)
 {
 	this->need = need;
 	this->exp = exp;
 	this->questName = new sf::Text();
-	this->questName->setString("Bla");
 	this->description = new sf::Text();
-	this->description->setString("Blawwa");
 	this->item = item;
 	this->id = id;
 	this->completed = false;
 	this->money = money;
 	this->createSprite("button_quest.png");
 	this->setFrameSize(SIZE_QUEST_BUTTON_WIDTH_NORMAL,SIZE_QUEST_BUTTON_HEIGHT_NORMAL);
-
-	this->need[MATH_ID]			= 0;
+        this->setPosition(x,y);
+	this->need[MATH_ID]		= 0;
 	this->need[ALGORITHM_ID]	= 0;
-	this->need[PROGRAMMING_ID]  = 0;
+	this->need[PROGRAMMING_ID]      = 0;
 	this->need[DESIGN_ID]		= 0;
 	this->need[DATABASES_ID]	= 0;
 	this->need[ELECTRONICS_ID]	= 0;
-
+        
 	sf::Font *font = new sf::Font();
 
-	if (!font->loadFromFile("C:\\Windows\\Fonts\\arial.ttf"))
-	{
-		std::cout<<"Font couldn't be loaded"<<std::endl;
-	}else{
+        if(!font->loadFromFile(FONT_STANDARD)){
+                std::cout<<"Font couldn't be loaded"<<std::endl;
+        }
+        else{
 		//this->description->setColor(sf::Color::Red);
 		//this->description->setFont(*font);
 		//this->description->setCharacterSize(16);
-		this->questName->setString("Blub");
-		this->questName->setPosition(this->getXPosition(),this->getYPosition());
+		this->questName = getNameText();
+                this->questName->setFont(*font);
+                this->questName->setColor(sf::Color::Green);
+                this->questName->setPosition(this->getXPosition()+8,this->getYPosition());
+                this->questName->setCharacterSize(FONT_SIZE_NORMAL);
+                
+                this->description = getDescText();
+                this->description->setFont(*font);
+                this->description->setColor(sf::Color::Black);
+                this->description->setPosition(this->getXPosition()+8,this->getYPosition()+FONT_SIZE_NORMAL*2);
+                this->description->setCharacterSize(FONT_SIZE_SMALL);
 	}
 }
 
@@ -97,4 +104,50 @@ bool Quest::isComplete(){
 
 int Quest::getMoney(){
 	return this->money;
+}
+
+void Quest::draw(sf::RenderWindow* window){
+    std::cout<<"Draw Quest"<<std::endl;
+    Button::draw(window);
+    window->draw(*this->description);
+    window->draw(*this->questName);
+}
+
+sf::Text* Quest::getNameText(){
+    sf::Text* text = new sf::Text(); 
+    switch(this->id){
+        case QUEST_HELLO_WORLD:
+            text->setString("Hello World");
+            break;
+        case QUEST_CALCULATOR:
+            text->setString("Calculator");
+            break;
+        default:
+            text->setString("NOT FOUND");
+            break;
+    }
+    return text;
+}
+
+sf::Text* Quest::getDescText(){
+    sf::Text* text = new sf::Text(); 
+    switch(this->id){
+        case QUEST_HELLO_WORLD:
+            text->setString("Write your first program.(Why should I greet this cruel World...?)");
+            break;
+        case QUEST_CALCULATOR:
+            text->setString("Write your first simple calculator. You love arithmetic operations!");
+            break;
+        default:
+            text->setString("NOT FOUND");
+            break;
+    } 
+    return text;
+}
+
+void Quest::setPosition(int x, int y){
+    Button::setPosition(x,y);
+    this->questName->setPosition(this->getXPosition()+8,this->getYPosition());
+    this->description->setPosition(this->getXPosition()+8,this->getYPosition()+FONT_SIZE_NORMAL*2);
+    
 }

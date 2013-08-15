@@ -3,7 +3,7 @@
 
 Computer::Computer(void)
 {
-	setId(ROOM_IDS::COMPUTER);
+	setId(1);
 	createSprite("computer.png");
 	setFrameSize(256,256);
 	setMenu(new ComputerMenu("menu_computer.png"));

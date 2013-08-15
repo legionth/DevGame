@@ -1,10 +1,9 @@
 #include "Box.h"
 #include "BoxMenu.h"
 
-
 Box::Box(void)
 {
-	setId(ROOM_IDS::BOX);
+	setId(3);
 	createSprite("box.png");
 	setFrameSize(64,64);
 	BoxMenu* menu = new BoxMenu("menu_box.png");
