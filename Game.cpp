@@ -12,13 +12,13 @@
 
 Game::Game() {
 	this->windowWidth = SIZE_WINDOW_WIDTH_NORMAL;
-    this->windowHeight = SIZE_WINDOW_HEIGHT_NORMAL;
-    this->window = new sf::RenderWindow(sf::VideoMode(windowWidth,windowHeight),"DevGame");
-    
-    this->player = new Player();
-    this->player->setPosition(windowWidth/2,windowHeight/2);
-    
-    this->room = new Room();
+	this->windowHeight = SIZE_WINDOW_HEIGHT_NORMAL;
+	this->window = new sf::RenderWindow(sf::VideoMode(windowWidth,windowHeight),"DevGame");
+
+	this->player = new Player();
+	this->player->setPosition(windowWidth/2,windowHeight/2);
+
+	this->room = new Room();
 	this->currentMenu = 0;
 	buttonDelay.restart();
 
@@ -37,77 +37,99 @@ Game::~Game() {
 void Game::run(){
     init();
 	while(window->isOpen()){
-        sf::Event event;
+		sf::Event event;
 
-        while(window->pollEvent(event)){
-            if(event.type == sf::Event::Closed){
-                window->close();
-				return;
-            }
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab) && buttonDelay.getElapsedTime().asSeconds() > 0.25){
-            //	Inventory* inv = this->player->getInventory();
-                    if(this->currentMenu != 0 && this->currentMenu->getId() == MENU_INVENTORY){
-                            currentMenu->close();
-                            currentMenu = 0;
-                            buttonDelay.restart();
-                    }
-                    else{
-                            setCurrentMenu((Menu*)this->player->getInventory());
-                            buttonDelay.restart();
-                    }
-            }
-            else if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-				event.mouseButton.x;
-				event.mouseButton.y;
-                int xArgument = sf::Mouse::getPosition(*window).x;
-                int yArgument = sf::Mouse::getPosition(*window).y;
+		while(window->pollEvent(event)){
+		    if(event.type == sf::Event::Closed){
+		        window->close();
+					return;
+		    }
+		    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab) && buttonDelay.getElapsedTime().asSeconds() > 0.25){
+		    //	Inventory* inv = this->player->getInventory();
+		            if(this->currentMenu != 0 && this->currentMenu->getId() == MENU_INVENTORY){
+		                    currentMenu->close();
+		                    currentMenu = 0;
+		                    buttonDelay.restart();
+		            }
+		            else{
+		                    setCurrentMenu((Menu*)this->player->getInventory());
+		                    buttonDelay.restart();
+		            }
+		    }
+		    else if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+			event.mouseButton.x;
+			event.mouseButton.y;
+		        int xArgument = sf::Mouse::getPosition(*window).x;
+		        int yArgument = sf::Mouse::getPosition(*window).y;
 				
-				if(currentMenu == 0 && buttonDelay.getElapsedTime().asSeconds() > 0.25){
-					player->getSprite()->setPosition(xArgument,yArgument);
-			
-					int countRoomObjects = room->getRoomObjects().size();
-					for(int i = 0; i < countRoomObjects; i++){
-						RoomObject* obj = room->getRoomObjects()[i];
+			if(currentMenu == 0 && buttonDelay.getElapsedTime().asSeconds() > 0.25){
+				player->getSprite()->setPosition(xArgument,yArgument);
+	
+				int countRoomObjects = room->getRoomObjects().size();
+				for(int i = 0; i < countRoomObjects; i++){
+					RoomObject* obj = room->getRoomObjects()[i];
 
-						if(obj->getXPosition()					  < xArgument &&
-						   obj->getYPosition()					  < yArgument &&
-						   obj->getXPosition() + obj->getWidth()  > xArgument &&
-						   obj->getYPosition() + obj->getHeight() > yArgument){
-							   
-							   if(obj->getMenu() != 0){
-									obj->openMenu();
-							   }
+					if(obj->getXPosition()					  < xArgument &&
+					   obj->getYPosition()					  < yArgument &&
+					   obj->getXPosition() + obj->getWidth()  > xArgument &&
+					   obj->getYPosition() + obj->getHeight() > yArgument){
+						   
+						   if(obj->getMenu() != 0){
+								obj->openMenu();
+						   }
 
-							   currentMenu = obj->getMenu();
-							   buttonDelay.restart();							
-						}
+						   currentMenu = obj->getMenu();
+						   buttonDelay.restart();							
 					}
-				}else if(buttonDelay.getElapsedTime().asSeconds() > 0.25f){     // Button actions
-					int size = currentMenu->getButtons().size();
-					Menu* tmpMenu = currentMenu;
-					for(int i=0; i < size; i++){
-						Button* obj = currentMenu->getButtons()[i];
-
-						if(obj->getXPosition()					  < xArgument &&
-						   obj->getYPosition()					  < yArgument &&
-						   obj->getXPosition() + obj->getWidth()  > xArgument &&
-						   obj->getYPosition() + obj->getHeight() > yArgument){
-							   obj->action(this);
-							   buttonDelay.restart();
-							   if(currentMenu == 0 || tmpMenu != currentMenu){
-									break;
-							   }
-						}
-					}
-
 				}
-            }
-        }
-		if(window->isOpen()){
-			window->clear();
-			this->draw();
-			window->display();
-		}
+			}else if(buttonDelay.getElapsedTime().asSeconds() > 0.25f){     // Button actions
+				int size = currentMenu->getButtons().size();
+				Menu* tmpMenu = currentMenu;
+				for(int i=0; i < size; i++){
+					Button* obj = currentMenu->getButtons()[i];
+
+					if(obj->getXPosition()					  < xArgument &&
+					   obj->getYPosition()					  < yArgument &&
+					   obj->getXPosition() + obj->getWidth()  > xArgument &&
+					   obj->getYPosition() + obj->getHeight() > yArgument){
+						   obj->action(this);
+						   buttonDelay.restart();
+						   if(currentMenu == 0 || tmpMenu != currentMenu){
+								break;
+						   }
+					}
+				}
+			}
+		 }
+		 else if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
+		        int xArgument = sf::Mouse::getPosition(*window).x;
+		        int yArgument = sf::Mouse::getPosition(*window).y;
+
+		 	if(currentMenu != 0 && buttonDelay.getElapsedTime().asSeconds() > 0.25f){     // Button actions
+				int size = currentMenu->getButtons().size();
+				Menu* tmpMenu = currentMenu;
+				for(int i=0; i < size; i++){
+					Button* obj = currentMenu->getButtons()[i];
+					if(obj->getActionMenu() != 0){
+						if(obj->getXPosition()					  < xArgument &&
+						   obj->getYPosition()					  < yArgument &&
+						   obj->getXPosition() + obj->getWidth()  > xArgument &&
+						   obj->getYPosition() + obj->getHeight() > yArgument){
+							   obj->openActionMenu(this);
+
+						}
+					}
+				}
+			}else{
+				this->currentActionMenu = 0;
+			}
+	 	}
+	}//end while
+	if(window->isOpen()){
+		window->clear();
+		this->draw();
+		window->display();
+	}
     }
 }
 
@@ -161,4 +183,16 @@ Player* Game::getPlayer(){
 
 Box* Game::getBox(){
 	return this->box;
+}
+
+void Game::setCurrentActiontMenu(ActionMenu* menu){
+	this->currentActionMenu = menu;
+}
+
+void Game::setCurrentQuest(Quest* quest){
+	this->currentQuest = quest;
+}
+
+Quest* Game::getCurrentQuest(){
+	return this->currentQuest;
 }

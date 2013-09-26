@@ -7,13 +7,19 @@
 
 #ifndef ACTIONMENU_H
 #define	ACTIONMENU_H
-
-class ActionMenu {
+#include "Drawable.h"
+#include "Action.h"
+class ActionMenu : public DrawAble{
 public:
     ActionMenu();
     ActionMenu(const ActionMenu& orig);
     virtual ~ActionMenu();
+	bool isShown();
+	void showMenu(bool b);
+	void action(Game* game);
 private:
+	bool shown;
+	std::map<std::string,Action*> actions;
 
 };
 

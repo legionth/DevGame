@@ -27,15 +27,15 @@ BuyMenu::BuyMenu(Menu* prevMenu):Menu("menu_buy.png",MENU_BUY)
 		this->itemHolderButtons.push_back(holder);
 		sf::Text* t = this->getText(i-1);
 		sf::Font* font = new sf::Font();
-                sf::Text* p = new sf::Text();
-                p->setString("Price: " + convertInt(item->getBuyPrice()));      //Must be done like that
+        sf::Text* p = new sf::Text();
+        p->setString("Price: " + convertInt(item->getBuyPrice()));      //Must be done like that
                 
-                if(!font->loadFromFile(FONT_STANDARD)){
-                    std::cout<<"FAILED: loading font in BuyMenu"<<std::endl;
-                }else{
-                    p->setFont(*font); 
-                    t->setFont(*font);
-                }
+        if(!font->loadFromFile(FONT_STANDARD)){
+            std::cout<<"FAILED: loading font in BuyMenu"<<std::endl;
+        }else{
+            p->setFont(*font); 
+            t->setFont(*font);
+        }
                 
                 //Bug Default-Font doesn't exist in SFML2
                 

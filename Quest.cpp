@@ -50,9 +50,9 @@ Quest::~Quest(void)
 }
 
 void Quest::action(Game* game){
-//	if(isAvaible(game) && isVisible()){
-
-	//}
+   if(isAvaible(game) && isVisible()){
+	   game->setCurrentQuest(this);
+   }
 }
 
 void Quest::hide(){
@@ -70,14 +70,16 @@ void Quest::setVisible(bool visible){
 bool Quest::isAvaible(Game* game){
 	Player* player = game->getPlayer();
 	bool ret = false;
-	if(	this->need[MATH_ID] == player->getMath()				&&
-		this->need[ALGORITHM_ID] == player->getAlgortihm()		&&
-		this->need[PROGRAMMING_ID] == player->getProgramming()	&&
-		this->need[DESIGN_ID] == player->getDesign()			&&
-		this->need[DATABASES_ID] == player->getDatabases()		&&
-		this->need[ELECTRONICS_ID] == player->getElectronics()){
+	
+	if(	this->need[MATH_ID] <= player->getMath()				&&
+		this->need[ALGORITHM_ID] <= player->getAlgortihm()		&&
+		this->need[PROGRAMMING_ID] <= player->getProgramming()	&&
+		this->need[DESIGN_ID] <= player->getDesign()			&&
+		this->need[DATABASES_ID] <= player->getDatabases()		&&
+		this->need[ELECTRONICS_ID] <= player->getElectronics()){
 			ret = true;
 	}
+
 	return ret;
 }
 	 
@@ -107,7 +109,6 @@ int Quest::getMoney(){
 }
 
 void Quest::draw(sf::RenderWindow* window){
-    std::cout<<"Draw Quest"<<std::endl;
     Button::draw(window);
     window->draw(*this->description);
     window->draw(*this->questName);

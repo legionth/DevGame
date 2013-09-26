@@ -16,6 +16,8 @@
 #include "Computer.h"
 #include "Box.h"
 #include "Consts.h"
+#include "ActionMenu.h"
+#include "Quest.h"
 
 #ifndef GAME_H
 #define	GAME_H
@@ -27,20 +29,26 @@ public:
     virtual ~Game();
     
     void run();
-    void draw();
+   	void draw();
 	void init();
 	void setCurrentMenu(Menu* menu);
+	void setCurrentActiontMenu(ActionMenu* menu);
+	void setCurrentQuest(Quest* quest);
+	Quest* getCurrentQuest();
 	Box* getBox();
+
 	Player* getPlayer();
 private:
-    sf::RenderWindow* window;
-    Player* player;
-    Room* room;
-    int windowWidth;
+	sf::RenderWindow* window;
+	Player* player;
+	Room* room;
+	int windowWidth;
     int windowHeight;
 	Menu* currentMenu;
+	ActionMenu* currentActionMenu;
 	sf::Clock buttonDelay;
 	Box* box;
+	Quest* currentQuest;
 };
 
 #endif	/* GAME_H */

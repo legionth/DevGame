@@ -16,3 +16,14 @@ ActionMenu::ActionMenu(const ActionMenu& orig) {
 ActionMenu::~ActionMenu() {
 }
 
+bool ActionMenu::isShown(){
+	return this->shown;
+}
+
+void ActionMenu::showMenu(bool b){
+	this->shown = b;
+}
+
+void ActionMenu::action(Game* game){
+
+}
