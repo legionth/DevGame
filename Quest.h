@@ -45,7 +45,7 @@ private:
 	std::map<int,int> exp;								// Experience reward for completed this quest
 	bool completed;										// Completed Quest
 	int money;
-        sf::Text* getNameText();
-        sf::Text* getDescText();
+    sf::Text* getNameText();
+    sf::Text* getDescText();
 };
 

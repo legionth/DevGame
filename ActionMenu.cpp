@@ -10,7 +10,7 @@
 ActionMenu::ActionMenu() {
 }
 
-ActionMenu::ActionMenu(const ActionMenu& orig) {
+ActionMenu::ActionMenu(const ActionMenu& orig){
 }
 
 ActionMenu::~ActionMenu() {
@@ -24,6 +24,8 @@ void ActionMenu::showMenu(bool b){
 	this->shown = b;
 }
 
-void ActionMenu::action(Game* game){
-
+void ActionMenu::draw(sf::RenderWindow* window){
+	for(int i = 0; i < this->actions.size(); i++){
+		actions[i]->draw(window);
+	}
 }

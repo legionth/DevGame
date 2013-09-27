@@ -38,6 +38,10 @@ const int SIZE_HOLDER_BUTTON_HEIGHT_NORMAL	= 64;
 const int SIZE_ITEM_WIDTH_NORMAL			= 32;
 const int SIZE_ITEM_HEIGHT_NORMAL			= 32;
 
+const int SIZE_ACTION_MENU_HEIGHT_NORMAL	= 32;
+const int SIZE_ACTION_MENU_WIDTH_NORMAL		= 256;
+
+const int FONT_SIZE_VERY_SMALL				= 8;
 const int FONT_SIZE_SMALL					= 12;
 const int FONT_SIZE_NORMAL					= 16;
 

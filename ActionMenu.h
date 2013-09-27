@@ -16,10 +16,11 @@ public:
     virtual ~ActionMenu();
 	bool isShown();
 	void showMenu(bool b);
-	void action(Game* game);
+	void draw(sf::RenderWindow* window);
 private:
 	bool shown;
-	std::map<std::string,Action*> actions;
+	//std::map<std::string,Action*> actions;
+	std::vector<Action*> actions;
 
 };
 

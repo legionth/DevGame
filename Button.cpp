@@ -20,5 +20,5 @@ ActionMenu* Button::getActionMenu(){
 }
 void Button::openActionMenu(Game* game){
 	game->setCurrentActiontMenu(getActionMenu());
-	this->actionMenu->action(game);
+	//this->actionMenu->action(game);
 }

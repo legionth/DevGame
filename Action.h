@@ -1,16 +1,18 @@
 #pragma once
 #include "Menu.h"
+#include "Button.h"
 class Game;
-class Action
+class Action : Button
 {
 public:
 	Action(void);
 	Action(Menu* menu);
 	~Action(void);
-	void execute(Game* game);
-	void setName(sf::String name);
+	void action(Game* game);
+	void draw(sf::RenderWindow* window);
+	void setName(std::string name);
 private:
 	Menu* menu;
-	sf::String name;
+	sf::Text *name;
 };
 
