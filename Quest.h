@@ -6,7 +6,7 @@
 /**
 * Quest Button returns Items and +/- Attrbiutes. Should be used to improve player skills and/or add a
 * Item to Inventory
-* Shoul work for all Menu's	@TODO test this :P
+* Should work for all Menu's	@TODO test this :P
 */
 class Quest : public Button
 {
@@ -18,7 +18,7 @@ public:
 	void hide();
 	void show();
 	void setVisible(bool visible);
-        void setPosition(int x, int y);
+    void setPosition(int x, int y);
 
 	bool isAvaible(Game* game);
 	bool isVisible();
@@ -31,7 +31,6 @@ public:
 	sf::Text* getQuestDescription();
 
 	int getId();
-
 	int getMoney();
     void draw(sf::RenderWindow* window);
 private:

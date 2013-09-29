@@ -2,7 +2,7 @@
 #include "Menu.h"
 #include "Button.h"
 class Game;
-class Action : Button
+class Action : public Button
 {
 public:
 	Action(void);

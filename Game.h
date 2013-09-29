@@ -15,6 +15,7 @@
 #include "Room.h"
 #include "Computer.h"
 #include "Box.h"
+#include "Bookcase.h"
 #include "Consts.h"
 #include "ActionMenu.h"
 #include "Quest.h"
@@ -49,6 +50,9 @@ private:
 	sf::Clock buttonDelay;
 	Box* box;
 	Quest* currentQuest;
+
+	int lastMousePositionX;
+	int lastMousePositionY;
 };
 
 #endif	/* GAME_H */

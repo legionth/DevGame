@@ -9,6 +9,7 @@
 #include "BoxMenu.h"
 #include "Inventory.h"
 #include "DevMenu.h"
+#include "BookcaseMenu.h"
 
 Game::Game() {
 	this->windowWidth = SIZE_WINDOW_WIDTH_NORMAL;
@@ -20,6 +21,7 @@ Game::Game() {
 
 	this->room = new Room();
 	this->currentMenu = 0;
+	this->currentActionMenu = 0;
 	buttonDelay.restart();
 
 }
@@ -57,31 +59,32 @@ void Game::run(){
 		            }
 		    }
 		    else if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-			event.mouseButton.x;
-			event.mouseButton.y;
-		        int xArgument = sf::Mouse::getPosition(*window).x;
-		        int yArgument = sf::Mouse::getPosition(*window).y;
+				event.mouseButton.x;
+				event.mouseButton.y;
+
+				int xArgument = sf::Mouse::getPosition(*window).x;
+				int yArgument = sf::Mouse::getPosition(*window).y;
 				
-			if(currentMenu == 0 && buttonDelay.getElapsedTime().asSeconds() > 0.25){
-				player->getSprite()->setPosition(xArgument,yArgument);
+				if(currentMenu == 0 && buttonDelay.getElapsedTime().asSeconds() > 0.25){
+					player->getSprite()->setPosition(xArgument,yArgument);
 	
-				int countRoomObjects = room->getRoomObjects().size();
-				for(int i = 0; i < countRoomObjects; i++){
-					RoomObject* obj = room->getRoomObjects()[i];
+					int countRoomObjects = room->getRoomObjects().size();
+					for(int i = 0; i < countRoomObjects; i++){
+						RoomObject* obj = room->getRoomObjects()[i];
 
-					if(obj->getXPosition()					  < xArgument &&
-					   obj->getYPosition()					  < yArgument &&
-					   obj->getXPosition() + obj->getWidth()  > xArgument &&
-					   obj->getYPosition() + obj->getHeight() > yArgument){
+						if(obj->getXPosition()					  < xArgument &&
+						   obj->getYPosition()					  < yArgument &&
+						   obj->getXPosition() + obj->getWidth()  > xArgument &&
+						   obj->getYPosition() + obj->getHeight() > yArgument){
 						   
-						   if(obj->getMenu() != 0){
-								obj->openMenu();
-						   }
+							   if(obj->getMenu() != 0){
+									obj->openMenu();
+							   }
 
-						   currentMenu = obj->getMenu();
-						   buttonDelay.restart();							
+							   currentMenu = obj->getMenu();
+							   buttonDelay.restart();							
+						}
 					}
-				}
 			}else if(buttonDelay.getElapsedTime().asSeconds() > 0.25f){     // Button actions
 				int size = currentMenu->getButtons().size();
 				Menu* tmpMenu = currentMenu;
@@ -102,12 +105,13 @@ void Game::run(){
 			}
 		 }
 		 else if(sf::Mouse::isButtonPressed(sf::Mouse::Right)){
-		        int xArgument = sf::Mouse::getPosition(*window).x;
-		        int yArgument = sf::Mouse::getPosition(*window).y;
+		    int xArgument = sf::Mouse::getPosition(*window).x;
+		    int yArgument = sf::Mouse::getPosition(*window).y;
 
 		 	if(currentMenu != 0 && buttonDelay.getElapsedTime().asSeconds() > 0.25f){     // Button actions
 				int size = currentMenu->getButtons().size();
 				Menu* tmpMenu = currentMenu;
+
 				for(int i=0; i < size; i++){
 					Button* obj = currentMenu->getButtons()[i];
 					if(obj->getActionMenu() != 0){
@@ -116,6 +120,8 @@ void Game::run(){
 						   obj->getXPosition() + obj->getWidth()  > xArgument &&
 						   obj->getYPosition() + obj->getHeight() > yArgument){
 							   obj->openActionMenu(this);
+							   lastMousePositionX = xArgument;
+							   lastMousePositionY = yArgument;
 
 						}
 					}
@@ -155,21 +161,33 @@ void Game::draw(){
 			DevMenu* r = reinterpret_cast<DevMenu*>(currentMenu);
 			r->draw(window);
 		}
+		else if(currentMenu->getId() == MENU_BOOKCASE){
+			BookcaseMenu* r = reinterpret_cast<BookcaseMenu*>(currentMenu);
+			r->draw(window);
+		}
 		else{
 			currentMenu->draw(window);
 		}
+	}
+
+	if(currentActionMenu != 0){
+		this->currentActionMenu->draw(window,lastMousePositionX,lastMousePositionY);
 	}
 }
 
 void Game::init(){
 	Computer *computer = new Computer();
 	Box *box = new Box();
+	Bookcase* bookcase = new Bookcase();
 
 	computer->setPosition(this->windowWidth/2 - computer->getWidth()/2,0);
+	bookcase->setPosition(this->windowWidth/2 - bookcase->getWidth()/2 + 256 + 8,0);
 	box->setPosition(this->windowWidth - box->getWidth(),this->windowHeight/2);
 
 	room->addRoomObject(computer);
 	room->addRoomObject(box);
+	room->addRoomObject(bookcase);
+
 	this->box = box;
 }
 

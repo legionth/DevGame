@@ -13,34 +13,35 @@ Quest::Quest(int id,Item* item,std::map<int,int> need, std::map<int,int> exp, in
 	this->money = money;
 	this->createSprite("button_quest.png");
 	this->setFrameSize(SIZE_QUEST_BUTTON_WIDTH_NORMAL,SIZE_QUEST_BUTTON_HEIGHT_NORMAL);
-        this->setPosition(x,y);
-	this->need[MATH_ID]		= 0;
+    this->setPosition(x,y);
+
+	this->need[MATH_ID]			= 0;
 	this->need[ALGORITHM_ID]	= 0;
-	this->need[PROGRAMMING_ID]      = 0;
+	this->need[PROGRAMMING_ID]  = 0;
 	this->need[DESIGN_ID]		= 0;
 	this->need[DATABASES_ID]	= 0;
 	this->need[ELECTRONICS_ID]	= 0;
         
 	sf::Font *font = new sf::Font();
 
-        if(!font->loadFromFile(FONT_STANDARD)){
-                std::cout<<"Font couldn't be loaded"<<std::endl;
-        }
-        else{
+    if(!font->loadFromFile(FONT_STANDARD)){
+            std::cout<<"Font couldn't be loaded"<<std::endl;
+    }
+    else{
 		//this->description->setColor(sf::Color::Red);
 		//this->description->setFont(*font);
 		//this->description->setCharacterSize(16);
 		this->questName = getNameText();
-                this->questName->setFont(*font);
-                this->questName->setColor(sf::Color::Green);
-                this->questName->setPosition(this->getXPosition()+8,this->getYPosition());
-                this->questName->setCharacterSize(FONT_SIZE_NORMAL);
+        this->questName->setFont(*font);
+        this->questName->setColor(sf::Color::Green);
+        this->questName->setPosition(this->getXPosition()+8,this->getYPosition());
+        this->questName->setCharacterSize(FONT_SIZE_NORMAL);
                 
-                this->description = getDescText();
-                this->description->setFont(*font);
-                this->description->setColor(sf::Color::Black);
-                this->description->setPosition(this->getXPosition()+8,this->getYPosition()+FONT_SIZE_NORMAL*2);
-                this->description->setCharacterSize(FONT_SIZE_SMALL);
+        this->description = getDescText();
+        this->description->setFont(*font);
+        this->description->setColor(sf::Color::Black);
+        this->description->setPosition(this->getXPosition()+8,this->getYPosition()+FONT_SIZE_NORMAL*2);
+        this->description->setCharacterSize(FONT_SIZE_SMALL);
 	}
 }
 

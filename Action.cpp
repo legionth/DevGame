@@ -20,7 +20,6 @@ void Action::action(Game* game){
 		this->menu->open();
 		game->setCurrentMenu(this->menu);
 	}
-
 }
 
 void Action::setName(std::string name){
@@ -30,5 +29,6 @@ void Action::setName(std::string name){
 void Action::draw(sf::RenderWindow* window){
 	//Button::draw(game);
 	window->draw(*this->getSprite());
+	this->name->setPosition(this->getSprite()->getPosition().x,this->getSprite()->getPosition().y);
 	window->draw(*this->name);
 }

@@ -16,7 +16,7 @@ public:
     virtual ~ActionMenu();
 	bool isShown();
 	void showMenu(bool b);
-	void draw(sf::RenderWindow* window);
+	void draw(sf::RenderWindow* window,int mouseX,int mouseY);
 private:
 	bool shown;
 	//std::map<std::string,Action*> actions;
