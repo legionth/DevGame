@@ -10,7 +10,7 @@ public:
 	void addItem(Item* item);
 	void draw(sf::RenderWindow* window);
 	void setCurrentDescription(std::string desc);
-	sf::Text getCurrentDescription();
+	sf::Text* getCurrentDescription();
 private:
 	std::vector<ItemHoldButton*> itemButtons;
 	sf::Text currentDescription;
