@@ -18,16 +18,16 @@ Item::Item(int id){
 	this->sellPrice = 0;
 	this->buyPrice = 0;
 	this->sellAble = true;
-	this->book = false;
+	this->unique = false;
 
 	switch(id){								
 		case ITEM_BOOK_HELLO_WORLD:
 			this->createSprite("book_hello_world.png");
-			this->book = true;
+			this->unique = true;
 			break;
 		case ITEM_BOOK_CALCULATOR:
 			this->createSprite("book_calculator.png");
-			this->book = true;
+			this->unique = true;
 			break;
 	}
 

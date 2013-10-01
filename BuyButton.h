@@ -1,10 +1,10 @@
 #pragma once
-#include "Button.h"
+#include "ItemHoldButton.h"
 
 /**
 *	Aktion fuer das BuyMenu
 **/
-class BuyButton : public Button
+class BuyButton : public ItemHoldButton
 {
 public:
 	BuyButton(void);

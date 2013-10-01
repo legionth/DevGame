@@ -13,8 +13,11 @@ public:
 	void setActionMenu(ActionMenu* menu);
 	ActionMenu* getActionMenu();
 	void openActionMenu(Game* game);
+	bool isBuyButton();
+	void setIsBuyButton(bool b);
 private:
 	sf::String label;
 	ActionMenu* actionMenu;
+	bool buyButton;
 };
 

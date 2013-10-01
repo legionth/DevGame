@@ -1,6 +1,7 @@
 #pragma once
 #include "Menu.h"
-#include "ItemHoldButton.h"
+#include "BuyButton.h"
+
 class BuyMenu : public Menu
 {
 public:
@@ -9,7 +10,7 @@ public:
 
 	void draw(sf::RenderWindow* window);
 private:
-	std::vector<ItemHoldButton*> itemHolderButtons;
+	std::vector<BuyButton*> itemHolderButtons;
 	std::vector<sf::Text*> text;
 	std::vector<sf::Text*> price;
 

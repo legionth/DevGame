@@ -10,6 +10,7 @@
 #include "Inventory.h"
 #include "DevMenu.h"
 #include "BookcaseMenu.h"
+#include "BuyButton.h"
 
 Game::Game() {
 	this->windowWidth = SIZE_WINDOW_WIDTH_NORMAL;
@@ -55,7 +56,7 @@ void Game::run(){
 		                    buttonDelay.restart();
 		            }
 		            else{
-		                    setCurrentMenu((Menu*)this->player->getInventory());
+							setCurrentMenu((Menu*)this->player->getInventory());
 		                    buttonDelay.restart();
 		            }
 		    }
@@ -89,15 +90,25 @@ void Game::run(){
 			}else if(buttonDelay.getElapsedTime().asSeconds() > 0.25f){     // Button actions
 				int size = currentMenu->getButtons().size();
 				Menu* tmpMenu = currentMenu;
+				std::cout<<"size="<<size<<std::endl;
 				for(int i=0; i < size; i++){
-					Button* obj = currentMenu->getButtons()[i];
+					Button* obj = currentMenu->getButtons()[i];			// @TODO das isnd nur buttons
 
 					if(obj->getXPosition()					  < xArgument &&
 					   obj->getYPosition()					  < yArgument &&
 					   obj->getXPosition() + obj->getWidth()  > xArgument &&
 					   obj->getYPosition() + obj->getHeight() > yArgument){
-						   obj->action(this);
+						   std::cout<<"obj buy button="<<obj->isBuyButton()<<std::endl;
+						   if(obj->isBuyButton()){
+								BuyButton* r = reinterpret_cast<BuyButton*>(obj);
+								r->action(this);
+						   }
+						   else{
+							   obj->action(this);
+						   }
+
 						   buttonDelay.restart();
+
 						   if(currentMenu == 0 || tmpMenu != currentMenu){
 								break;
 						   }

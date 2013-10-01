@@ -51,6 +51,7 @@ Quest::~Quest(void)
 }
 
 void Quest::action(Game* game){
+	std::cout<<"Quest selected"<<std::endl;
    if(isAvaible(game) && isVisible()){
 	   game->setCurrentQuest(this);
    }

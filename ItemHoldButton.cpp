@@ -43,3 +43,4 @@ void ItemHoldButton::clearItem(){
 void ItemHoldButton::action(Game* game){
 	this->selected = !selected;
 }
+

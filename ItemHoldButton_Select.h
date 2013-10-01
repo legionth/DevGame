@@ -8,8 +8,8 @@
 class ItemHoldButtonSelect : public ItemHoldButton
 {
 public:
-	ItemHoldButton(void);
-	~ItemHoldButton(void);
+	ItemHoldButtonSelect(void);
+	~ItemHoldButtonSelect(void);
 	void action(Game* game);
 	bool isSelected();
 	void select();

@@ -5,6 +5,7 @@
 Button::Button(void)
 {
 	this->actionMenu = 0;
+	this->buyButton = false;
 }
 
 
@@ -21,4 +22,12 @@ ActionMenu* Button::getActionMenu(){
 void Button::openActionMenu(Game* game){
 	game->setCurrentActiontMenu(getActionMenu());
 	//this->actionMenu->action(game);
+}
+
+bool Button::isBuyButton(){
+	return this->buyButton;
+}
+
+void Button::setIsBuyButton(bool b){
+	this->buyButton = b;
 }

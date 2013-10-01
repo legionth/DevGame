@@ -1,9 +1,10 @@
 #include "BuyButton.h"
-
+#include "Game.h"
 
 BuyButton::BuyButton(void)
 {
 	this->sold = false;
+	setIsBuyButton(true);
 }
 
 
@@ -12,6 +13,7 @@ BuyButton::~BuyButton(void)
 }
 
 void BuyButton::action(Game* game){
+	std::cout<<"Action buybutton"<<std::endl;
 	if(!this->sold){
 		Player* player = game->getPlayer();
 		Item* item = this->getItem();
