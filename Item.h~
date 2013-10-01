@@ -29,14 +29,14 @@ public:
 	bool isSellAble();
 	void setSellAble(bool b);
 
-	bool isUnique();
+	bool isBook();
 private:
     	int id;
 	sf::Text toolTip;
 	int sellPrice;
 	int buyPrice;
 	bool sellAble;
-	bool unique;
+	bool book;
 };
 
 #endif	/* ITEM_H */
