@@ -6,6 +6,7 @@ ItemHoldButton::ItemHoldButton(void)
 {
 	this->item = 0;
 	this->popUpMenu = 0;
+	this->selected = false;
 	this->createSprite("button_holder.png");
 	setFrameSize(SIZE_HOLDER_BUTTON_WIDTH_NORMAL,SIZE_HOLDER_BUTTON_HEIGHT_NORMAL);
 }
@@ -40,5 +41,5 @@ void ItemHoldButton::clearItem(){
 }
 
 void ItemHoldButton::action(Game* game){
-
+	this->selected = !selected;
 }

@@ -15,8 +15,10 @@ public:
 	Item* getItem();
 	void clearItem();
 	void action(Game* game);
+	bool isSelected();
 private:
 	PopUpMenu* popUpMenu;
 	Item* item;
+	bool selected;
 };
 

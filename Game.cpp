@@ -34,6 +34,7 @@ Game::~Game() {
     delete player;
 	delete room;
 	delete currentMenu;
+	delete currentQuest;
 }
 
 void Game::run(){
@@ -44,7 +45,7 @@ void Game::run(){
 		while(window->pollEvent(event)){
 		    if(event.type == sf::Event::Closed){
 		        window->close();
-					return;
+				return;
 		    }
 		    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Tab) && buttonDelay.getElapsedTime().asSeconds() > 0.25){
 		    //	Inventory* inv = this->player->getInventory();

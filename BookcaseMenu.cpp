@@ -49,7 +49,7 @@ void BookcaseMenu::draw(sf::RenderWindow* window){
 		window->draw(*itemButtons[i]->getSprite());
 
 		if(itemButtons[i]->getItem() != 0){
-			window->draw(*itemButtons[i]->getItem()->getSprite();
+			window->draw(*itemButtons[i]->getItem()->getSprite());
 		}
 	}
 
