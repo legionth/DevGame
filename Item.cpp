@@ -20,7 +20,7 @@ Item::Item(int id){
 	this->sellAble = true;
 	this->book = false;
 
-	switch(id){
+	switch(id){								
 		case ITEM_BOOK_HELLO_WORLD:
 			this->createSprite("book_hello_world.png");
 			this->book = true;

@@ -88,6 +88,6 @@ void Item::setSellAble(bool b){
 	this->sellAble = b;
 }
 
-bool Item::isBook(){
-	return this->book;
+bool Item::isUnique(){
+	return this->unique;
 }

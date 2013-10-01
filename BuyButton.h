@@ -4,7 +4,7 @@
 /**
 *	Aktion fuer das BuyMenu
 **/
-class BuyButton
+class BuyButton : public Button
 {
 public:
 	BuyButton(void);
