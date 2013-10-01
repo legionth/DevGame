@@ -15,36 +15,36 @@
 class Inventory;
 class Player : public DrawAble{
 public:
-    Player();
-    Player(const Player& orig);
-    virtual ~Player();
-    
-    int getMath();
-    int getAlgortihm();
-    int getProgramming();
-    int getDesign();
-    int getDatabases();
-    int getElectronics() const;
-        
-    void setMath(int i);
-    void setAlgorithm(int i);
-    void setProgramming(int i);
-    void setDesign(int i);
-    void setDatabases(int i);
-    void setElectronics(int electronics);
-    
-    void move(int x, int y);
+	Player();
+	Player(const Player& orig);
+	virtual ~Player();
+
+	int getMath();
+	int getAlgortihm();
+	int getProgramming();
+	int getDesign();
+	int getDatabases();
+	int getElectronics() const;
+
+	void setMath(int i);
+	void setAlgorithm(int i);
+	void setProgramming(int i);
+	void setDesign(int i);
+	void setDatabases(int i);
+	void setElectronics(int electronics);
+
+	void move(int x, int y);
 	int getMoney();
 	void setMoney(int i);
 	Inventory* getInventory();
 	void setInventory(Inventory* inventory);
 private:
-    int math;
-    int algorithm;
-    int programming;
-    int design;
-    int databases;
-    int electronics;
+	int math;
+	int algorithm;
+	int programming;
+	int design;
+	int databases;
+	int electronics;
 
 	int money;
 	Inventory* inventory;    

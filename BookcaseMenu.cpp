@@ -13,7 +13,7 @@ BookcaseMenu::BookcaseMenu(std::string file):Menu(file,MENU_BOOKCASE)
 	int y = 0;
 	int x = 1;
 	for(int i = 1; i <= 64; i++){
-		ItemHoldButton* holder = new ItemHoldButton();
+		ItemHoldButtonSelect* holder = new ItemHoldButtonSelect();
 		holder->setPosition(SIZE_HOLDER_BUTTON_WIDTH_NORMAL*x,
 			                SIZE_HOLDER_BUTTON_HEIGHT_NORMAL*y);
 		
@@ -63,4 +63,8 @@ void BookcaseMenu::setCurrentDescription(std::string desc){
 
 sf::Text BookcaseMenu::getCurrentDescription(){
 	return this->currentDescription;
+}
+
+std::vector<ItemHoldButtonSelect*> BookcaseMenu::getItemHoldButtons(){
+	return this->itemButtons;
 }
