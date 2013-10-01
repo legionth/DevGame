@@ -1,6 +1,6 @@
 #pragma once
 #include "Menu.h"
-#include "ItemHoldButton.h"
+#include "ItemHoldButtonSelect.h"
 
 class BookcaseMenu : public Menu
 {
@@ -11,8 +11,9 @@ public:
 	void draw(sf::RenderWindow* window);
 	void setCurrentDescription(std::string desc);
 	sf::Text getCurrentDescription();
+	std::vector<ItemHoldButtonSelect*> getItemHoldButtons();
 private:
-	std::vector<ItemHoldButton*> itemButtons;
+	std::vector<ItemHoldButtonSelect*> itemButtons;
 	sf::Text currentDescription;
 };
 

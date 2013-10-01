@@ -216,5 +216,5 @@ Quest* Game::getCurrentQuest(){
 }
 
 Menu* Game::getCurrentMenu(){
-	return this->currentMenu;
+
 }

@@ -37,7 +37,6 @@ public:
 	void setCurrentQuest(Quest* quest);
 	Quest* getCurrentQuest();
 	Box* getBox();
-	Menu* getCurrentMenu();
 
 	Player* getPlayer();
 private:
