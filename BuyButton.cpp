@@ -20,8 +20,13 @@ void BuyButton::action(Game* game){
 
 		if(item->getBuyPrice() <= player->getMoney()){
 			player->setMoney(player->getMoney() - item->getBuyPrice());
+			
 			if(item->isUnique()){
 				sold = true;
+			}
+			
+			if(item->isBook()){
+				game->getCurrentBookcase()->getBookcaseMenu()->addItem(item);
 			}
 		}
 	}

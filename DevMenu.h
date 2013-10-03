@@ -10,6 +10,7 @@ public:
 	void addQuest(Quest* quest);
 
 	void draw(sf::RenderWindow* window);
+	std::vector<Quest*> getQuests();
 private:
 	std::vector<Quest*> quests;
 };

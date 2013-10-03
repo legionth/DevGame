@@ -75,7 +75,9 @@ void BuyMenu::draw(sf::RenderWindow* window){
 
 	for(int i = 0; i < itemHolderButtons.size(); i++){
 		window->draw(*itemHolderButtons[i]->getSprite());
-		window->draw(*itemHolderButtons[i]->getItem()->getSprite());
+		if(!itemHolderButtons[i]->isSold()){
+			window->draw(*itemHolderButtons[i]->getItem()->getSprite());
+		}
 		window->draw(*text[i]);
 		window->draw(*price[i]);
 	}
@@ -96,4 +98,8 @@ sf::Text* BuyMenu::getText(int id){
 	}
 
 	return text;
+}
+
+std::vector<BuyButton*> BuyMenu::getBuyButtons(){
+	return this->itemHolderButtons;
 }

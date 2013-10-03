@@ -24,10 +24,12 @@ Item::Item(int id){
 		case ITEM_BOOK_HELLO_WORLD:
 			this->createSprite("book_hello_world.png");
 			this->unique = true;
+			this->book = true;
 			break;
 		case ITEM_BOOK_CALCULATOR:
 			this->createSprite("book_calculator.png");
 			this->unique = true;
+			this->book = true;
 			break;
 	}
 
@@ -90,4 +92,8 @@ void Item::setSellAble(bool b){
 
 bool Item::isUnique(){
 	return this->unique;
+}
+
+bool Item::isBook(){
+	return this->book;
 }

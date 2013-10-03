@@ -12,13 +12,13 @@
 
 class Item : public DrawAble{
 public:
-    	Item();
+    Item();
 	Item(int id);
 	Item(int id,std::string toolTip);
-    	Item(const Item& orig);
-    	virtual ~Item();
-    	int getId();
-    	void setId(int i);
+    Item(const Item& orig);
+    virtual ~Item();
+    int getId();
+    void setId(int i);
 	sf::Text getToolTip();
 	void setToolTip(std::string toolTip);
 
@@ -30,13 +30,15 @@ public:
 	void setSellAble(bool b);
 
 	bool isUnique();
+	bool isBook();
 private:
-    	int id;
+    int id;
 	sf::Text toolTip;
 	int sellPrice;
 	int buyPrice;
 	bool sellAble;
 	bool unique;
+	bool book;
 };
 
 #endif	/* ITEM_H */

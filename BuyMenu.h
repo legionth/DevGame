@@ -9,6 +9,7 @@ public:
 	~BuyMenu(void);
 
 	void draw(sf::RenderWindow* window);
+	std::vector<BuyButton*> getBuyButtons();
 private:
 	std::vector<BuyButton*> itemHolderButtons;
 	std::vector<sf::Text*> text;

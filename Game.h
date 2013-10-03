@@ -19,6 +19,7 @@
 #include "Consts.h"
 #include "ActionMenu.h"
 #include "Quest.h"
+#include "BuyButton.h"
 
 #ifndef GAME_H
 #define	GAME_H
@@ -35,9 +36,15 @@ public:
 	void setCurrentMenu(Menu* menu);
 	void setCurrentActiontMenu(ActionMenu* menu);
 	void setCurrentQuest(Quest* quest);
+	
 	Quest* getCurrentQuest();
 	Box* getBox();
 	Menu* getCurrentMenu();
+	Bookcase* getCurrentBookcase();
+
+	void executeAction(int xArgument, int yArgument);
+	void executeBuyAction(int xArgument, int yArgument);
+	void executeQuestAction(int xArgument, int yArgument);
 
 	Player* getPlayer();
 private:
@@ -46,8 +53,10 @@ private:
 	Room* room;
 	int windowWidth;
     int windowHeight;
+	
 	Menu* currentMenu;
 	ActionMenu* currentActionMenu;
+	Bookcase* currentBookCase;
 	sf::Clock buttonDelay;
 	Box* box;
 	Quest* currentQuest;

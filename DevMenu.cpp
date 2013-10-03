@@ -73,3 +73,7 @@ void DevMenu::draw(sf::RenderWindow* window){
             quests[i]->draw(window);
 	}
 }
+
+std::vector<Quest*> DevMenu::getQuests(){
+	return this->quests;
+}

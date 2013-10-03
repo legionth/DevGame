@@ -10,7 +10,6 @@
 #include "Inventory.h"
 #include "DevMenu.h"
 #include "BookcaseMenu.h"
-#include "BuyButton.h"
 
 Game::Game() {
 	this->windowWidth = SIZE_WINDOW_WIDTH_NORMAL;
@@ -88,31 +87,12 @@ void Game::run(){
 						}
 					}
 			}else if(buttonDelay.getElapsedTime().asSeconds() > 0.25f){     // Button actions
-				int size = currentMenu->getButtons().size();
-				Menu* tmpMenu = currentMenu;
-				std::cout<<"size="<<size<<std::endl;
-				for(int i=0; i < size; i++){
-					Button* obj = currentMenu->getButtons()[i];			// @TODO das isnd nur buttons
-
-					if(obj->getXPosition()					  < xArgument &&
-					   obj->getYPosition()					  < yArgument &&
-					   obj->getXPosition() + obj->getWidth()  > xArgument &&
-					   obj->getYPosition() + obj->getHeight() > yArgument){
-						   std::cout<<"obj buy button="<<obj->isBuyButton()<<std::endl;
-						   if(obj->isBuyButton()){
-								BuyButton* r = reinterpret_cast<BuyButton*>(obj);
-								r->action(this);
-						   }
-						   else{
-							   obj->action(this);
-						   }
-
-						   buttonDelay.restart();
-
-						   if(currentMenu == 0 || tmpMenu != currentMenu){
-								break;
-						   }
-					}
+				executeAction(xArgument,yArgument);
+				if(currentMenu != 0 && currentMenu->getId() == MENU_DEV){
+					executeQuestAction(xArgument,yArgument);
+				}
+				else if(currentMenu != 0 && currentMenu->getId() == MENU_BUY){
+					executeBuyAction(xArgument,yArgument);
 				}
 			}
 		 }
@@ -201,6 +181,7 @@ void Game::init(){
 	room->addRoomObject(bookcase);
 
 	this->box = box;
+	this->currentBookCase = bookcase;
 }
 
 void Game::setCurrentMenu(Menu* menu){
@@ -229,4 +210,73 @@ Quest* Game::getCurrentQuest(){
 
 Menu* Game::getCurrentMenu(){
 	return this->currentMenu;
+}
+
+
+void Game::executeAction(int xArgument, int yArgument){
+		int size = currentMenu->getButtons().size();
+		Menu* tmpMenu = currentMenu;
+		std::cout<<"size="<<size<<std::endl;
+		for(int i=0; i < size; i++){
+			Button* obj = currentMenu->getButtons()[i];			// @TODO das isnd nur buttons
+
+			if(obj->getXPosition()					  < xArgument &&
+				obj->getYPosition()					  < yArgument &&
+				obj->getXPosition() + obj->getWidth()  > xArgument &&
+				obj->getYPosition() + obj->getHeight() > yArgument){
+					obj->action(this);
+					buttonDelay.restart();
+
+					if(currentMenu == 0 || tmpMenu != currentMenu){
+						break;
+					}
+			}
+		}
+}
+
+void Game::executeQuestAction(int xArgument, int yArgument){
+		int size = reinterpret_cast<DevMenu*>(currentMenu)->getQuests().size();
+		DevMenu* tmpMenu = reinterpret_cast<DevMenu*>(currentMenu);
+		
+		std::cout<<"size="<<size<<std::endl;
+		for(int i=0; i < size; i++){
+			Quest* obj = reinterpret_cast<DevMenu*>(currentMenu)->getQuests()[i];			// @TODO das isnd nur buttons
+
+			if(obj->getXPosition()					  < xArgument &&
+				obj->getYPosition()					  < yArgument &&
+				obj->getXPosition() + obj->getWidth()  > xArgument &&
+				obj->getYPosition() + obj->getHeight() > yArgument){
+					obj->action(this);
+					buttonDelay.restart();
+
+					if(currentMenu == 0 || tmpMenu != reinterpret_cast<DevMenu*>(currentMenu)){
+						break;
+					}
+			}
+		}
+}
+
+void Game::executeBuyAction(int xArgument, int yArgument){
+		int size = reinterpret_cast<BuyMenu*>(currentMenu)->getBuyButtons().size();
+		BuyMenu* tmpMenu = reinterpret_cast<BuyMenu*>(currentMenu);
+		std::cout<<"size="<<size<<std::endl;
+		for(int i=0; i < size; i++){
+			BuyButton* obj = reinterpret_cast<BuyMenu*>(currentMenu)->getBuyButtons()[i];			// @TODO das isnd nur buttons
+
+			if(obj->getXPosition()					  < xArgument &&
+				obj->getYPosition()					  < yArgument &&
+				obj->getXPosition() + obj->getWidth()  > xArgument &&
+				obj->getYPosition() + obj->getHeight() > yArgument){
+					obj->action(this);
+					buttonDelay.restart();
+
+					if(currentMenu == 0 || tmpMenu != currentMenu){
+						break;
+					}
+			}
+		}
+}
+
+Bookcase* Game::getCurrentBookcase(){
+	return this->currentBookCase;
 }
