@@ -10,6 +10,14 @@
 #include "Inventory.h"
 #include "DevMenu.h"
 #include "BookcaseMenu.h"
+#include <sstream>
+
+std::string Game::convertInt(int number)
+{
+   std::stringstream ss;//create a stringstream
+   ss << number;//add number to the stream
+   return ss.str();//return a string with the contents of the stream
+}
 
 Game::Game() {
 	this->windowWidth = SIZE_WINDOW_WIDTH_NORMAL;
@@ -23,7 +31,17 @@ Game::Game() {
 	this->currentMenu = 0;
 	this->currentActionMenu = 0;
 	buttonDelay.restart();
+	
+	sf::Font* font = new sf::Font();
+	this->moneyText = new sf::Text();
 
+	if(!font->loadFromFile(FONT_STANDARD)){
+		    std::cout<<"FAILED: loading font in Game"<<std::endl;
+	}else{
+		this->moneyText->setFont(*font);
+		this->moneyText->setColor(sf::Color::Black);
+		this->moneyText->setCharacterSize(FONT_SIZE_NORMAL);
+	}
 }
 
 Game::Game(const Game& orig) {
@@ -162,6 +180,11 @@ void Game::draw(){
 		}
 	}
 
+	this->getMoneyText()->setPosition(20,20);
+	this->getMoneyText()->setString(convertInt(player->getMoney()) + " $");
+
+	window->draw(*this->getMoneyText());
+
 	if(currentActionMenu != 0){
 		this->currentActionMenu->draw(window,lastMousePositionX,lastMousePositionY);
 	}
@@ -279,4 +302,8 @@ void Game::executeBuyAction(int xArgument, int yArgument){
 
 Bookcase* Game::getCurrentBookcase(){
 	return this->currentBookCase;
+}
+
+sf::Text* Game::getMoneyText(){
+	return this->moneyText;
 }

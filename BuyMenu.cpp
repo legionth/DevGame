@@ -1,13 +1,7 @@
 #include "BuyMenu.h"
 #include "BuyButton.h"
 #include <sstream>
-
-std::string convertInt(int number)
-{
-   std::stringstream ss;//create a stringstream
-   ss << number;//add number to the stream
-   return ss.str();//return a string with the contents of the stream
-}
+#include "Game.h"
 
 BuyMenu::BuyMenu(Menu* prevMenu):Menu("menu_buy.png",MENU_BUY)
 {
@@ -30,7 +24,7 @@ BuyMenu::BuyMenu(Menu* prevMenu):Menu("menu_buy.png",MENU_BUY)
 		sf::Font* font = new sf::Font();
 		sf::Text* p = new sf::Text();
 
-		p->setString("Price: " + convertInt(item->getBuyPrice()));      //Must be done like that
+		p->setString("Price: " + Game::convertInt(item->getBuyPrice()));      //Must be done like that
 		        
 		if(!font->loadFromFile(FONT_STANDARD)){
 		    std::cout<<"FAILED: loading font in BuyMenu"<<std::endl;

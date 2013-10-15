@@ -12,7 +12,7 @@ BookcaseMenu::BookcaseMenu(std::string file):Menu(file,MENU_BOOKCASE)
 
 	int y = 0;
 	int x = 1;
-	for(int i = 1; i <= 64; i++){
+	for(int i = 1; i <= 16; i++){
 		ItemHoldButtonSelect* holder = new ItemHoldButtonSelect();
 		holder->setPosition(SIZE_HOLDER_BUTTON_WIDTH_NORMAL*x,
 			                SIZE_HOLDER_BUTTON_HEIGHT_NORMAL*y);
@@ -49,6 +49,7 @@ void BookcaseMenu::draw(sf::RenderWindow* window){
 		window->draw(*itemButtons[i]->getSprite());
 
 		if(itemButtons[i]->getItem() != 0){
+			itemButtons[i]->getItem()->setPosition(itemButtons[i]->getXPosition()  + 16,itemButtons[i]->getYPosition() + 16);
 			window->draw(*itemButtons[i]->getItem()->getSprite());
 		}
 	}
