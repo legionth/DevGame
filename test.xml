@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<menu key="quests">
+	<string key="quest_HelloWorld">
+		<tr lang="en">Hello World-Program</tr>
+		<tr lang="ger">Hallo Welt-Programm</tr>
+	</string>
+	<string key="description_quest_HelloWorld">
+		<tr lang="en">Why should I greed this cruel World?</tr>
+		<tr lang="ger">Warum sollte ich diese grausame Welt gruessen?</tr>
+	</string>
+</menu>
+
+<menu key="books">
+	<string key="books_HelloWorld">
+		<tr lang="en">Hello World-Book</tr>
+		<tr lang="ger">Hallo Welt-Buch</tr>
+	</string>
+	<string key="description_books_HelloWorld">
+		<tr lang="en">Your first program</tr>
+		<tr lang="ger">Dein erstes Programm</tr>
+	</string>
+</menu>
+
+</xml>
