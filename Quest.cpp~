@@ -136,13 +136,8 @@ sf::Text* Quest::getDescText(){
             text->setString("NOT FOUND");
             break;
     } 
-    sf::Font *font = new sf::Font();
 
-    if(!font->loadFromFile(FONT_STANDARD)){
-        std::cout<<"Font couldn't be loaded"<<std::endl;
-    }else{
-    	text->setFont(*font);
-    }
+    text->setFont(*font);
 
     return text;
 }

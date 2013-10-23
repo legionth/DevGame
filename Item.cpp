@@ -34,6 +34,8 @@ Item::Item(int id){
 	}
 
 	this->setFrameSize(SIZE_ITEM_WIDTH_NORMAL,SIZE_ITEM_HEIGHT_NORMAL);
+
+	this->description = this->generateDescription();
 }
 
 Item::Item(int id,std::string toolTip){
@@ -96,4 +98,32 @@ bool Item::isUnique(){
 
 bool Item::isBook(){
 	return this->book;
+}
+
+sf::Text* Item::generateDescription(){
+	sf::Text* text = new sf::Text();
+	switch(this->id){
+		case ITEM_BOOK_HELLO_WORLD:
+			text->setString("Syntax.Logic.Fun.");
+			break;
+		case ITEM_BOOK_HELLO_WORLD:
+			text->setString("+-/*");
+			break;
+		default:
+			text->setString("Lol! whut?");
+			break;
+	}   
+	sf::Font *font = new sf::Font();
+
+	if(!font->loadFromFile(FONT_STANDARD)){
+		std::cout<<"Font couldn't be loaded"<<std::endl;
+	}else{
+		text->setFont(*font);
+	}
+
+	return text;
+}
+
+sf::Text* Item::getDescText(){
+	return this->description;
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "Menu.h"
+#include "Item.h"
 #include "ItemHoldButton_Select.h"
 
 class BookcaseMenu : public Menu

@@ -52,9 +52,11 @@ void BookcaseMenu::draw(sf::RenderWindow* window){
 			itemButtons[i]->getItem()->setPosition(itemButtons[i]->getXPosition()  + 16,itemButtons[i]->getYPosition() + 16);
 			window->draw(*itemButtons[i]->getItem()->getSprite());
 		}
+		if(itemButtons[i]->isSelected() && itemButtons[i]->getItem() != 0){
+			itemButtons[i]->getItem()->getDescription()->setPosition(itemButtons[0]->getXPosition() ,itemButtons[itemButtons.size()]->getYPosition() + 16);
+			window->draw(*itemButtons[i]->getItem()->getDescText());
+		}
 	}
-
-	window->draw(currentDescription);
 }
 
 
@@ -69,3 +71,4 @@ sf::Text BookcaseMenu::getCurrentDescription(){
 std::vector<ItemHoldButtonSelect*> BookcaseMenu::getItemHoldButtons(){
 	return this->itemButtons;
 }
+

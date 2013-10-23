@@ -15,10 +15,10 @@ public:
     Item();
 	Item(int id);
 	Item(int id,std::string toolTip);
-    Item(const Item& orig);
-    virtual ~Item();
-    int getId();
-    void setId(int i);
+	Item(const Item& orig);
+    	virtual ~Item();
+    	int getId();
+	void setId(int i);
 	sf::Text getToolTip();
 	void setToolTip(std::string toolTip);
 
@@ -31,14 +31,18 @@ public:
 
 	bool isUnique();
 	bool isBook();
+	sf::Text* getDescText();
 private:
-    int id;
+	int id;
 	sf::Text toolTip;
 	int sellPrice;
 	int buyPrice;
 	bool sellAble;
 	bool unique;
 	bool book;
+	
+	sf::Text* description;
+	sf::Text* generateDescription();
 };
 
 #endif	/* ITEM_H */
