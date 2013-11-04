@@ -150,8 +150,8 @@ void Game::run(){
 }
 
 void Game::draw(){
-    room->draw(window);
-    player->draw(window);
+    	room->draw(window);
+    	player->draw(window);
 	int countRoomObjects = room->getRoomObjects().size();
 	
 	if(currentMenu != 0){                         //Dran denken #includen der *.h Dateien
@@ -309,4 +309,14 @@ Bookcase* Game::getCurrentBookcase(){
 
 sf::Text* Game::getMoneyText(){
 	return this->moneyText;
+}
+
+
+void Game::checkCurrentQuest(){
+	if(currentQuest != 0){
+		bool ok = currentQuest->isCompleted();
+		if(){
+
+		}
+	}
 }

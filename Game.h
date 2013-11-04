@@ -48,6 +48,7 @@ public:
 	sf::Text* getMoneyText();
 	Player* getPlayer();
 	static std::string convertInt(int number);
+	void checkCurrentQuest();
 private:
 	sf::RenderWindow* window;
 	Player* player;

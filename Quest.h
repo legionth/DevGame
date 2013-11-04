@@ -34,12 +34,22 @@ public:
 	int getMoney();
     	void draw(sf::RenderWindow* window);
 	sf::Sprite* getGameDisplaySprite();
+	std::map<int,int> getExperience();
+	// CurrentQuest Functions	
+	bool isCompleted();
+	void startQuest();
+	void stopQuest();
+	void restartQuest();
+
+	int getMaxTime();
 private:
 	int id;
-	bool visible;										// If this quest is shown in Menu
+        bool visible;								        // If this quest is shown in Menu
 	Item* item;
 	sf::Text *questName;
 	sf::Text *description;
+	sf::Clock clock;
+	int maxTime; 									// Max Time in Second that is needed to complete the Quest
 
 	std::map<int,int> need;								// Need Attributes by Player
 	std::map<int,int> exp;								// Experience reward for completed this quest

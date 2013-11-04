@@ -15,9 +15,9 @@ Quest::Quest(int id,Item* item,std::map<int,int> need, std::map<int,int> exp, in
 	this->setFrameSize(SIZE_QUEST_BUTTON_WIDTH_NORMAL,SIZE_QUEST_BUTTON_HEIGHT_NORMAL);
     	this->setPosition(x,y);
 
-	this->need[MATH_ID]			= 0;
+	this->need[MATH_ID]		= 0;
 	this->need[ALGORITHM_ID]	= 0;
-	this->need[PROGRAMMING_ID]  = 0;
+	this->need[PROGRAMMING_ID]  	= 0;
 	this->need[DESIGN_ID]		= 0;
 	this->need[DATABASES_ID]	= 0;
 	this->need[ELECTRONICS_ID]	= 0;
@@ -137,13 +137,28 @@ sf::Text* Quest::getDescText(){
     sf::Text* text = new sf::Text(); 
     switch(this->id){
         case QUEST_HELLO_WORLD:
-            text->setString("Write your first program.(Why should I greet this cruel World...?)");
+            	text->setString("Write your first program.(Why should I greet this cruel World...?)");
+	    	maxTime = 4;
+	    	this->exp[MATH_ID]		= 0;
+		this->exp[ALGORITHM_ID]		= 1;
+		this->exp[PROGRAMMING_ID]  	= 1;
+		this->exp[DESIGN_ID]		= 0;
+		this->exp[DATABASES_ID]		= 0;
+		this->exp[ELECTRONICS_ID]	= 0;
             break;
         case QUEST_CALCULATOR:
-            text->setString("Write your first simple calculator. You love arithmetic operations!");
+		text->setString("Write your first simple calculator. You love arithmetic operations!");
+		maxTime = 6;
+		this->exp[MATH_ID]		= 1;
+		this->exp[ALGORITHM_ID]		= 1;
+		this->exp[PROGRAMMING_ID]  	= 1;
+		this->exp[DESIGN_ID]		= 0;
+		this->exp[DATABASES_ID]		= 0;
+		this->exp[ELECTRONICS_ID]	= 0;
             break;
         default:
             text->setString("NOT FOUND");
+	    maxTime = 1;
             break;
     } 
     sf::Font *font = new sf::Font();
@@ -184,4 +199,34 @@ std::string Quest::getDisplaySpriteImgText(){
 
 sf::Sprite* Quest::getGameDisplaySprite(){
 	return this->gameDisplaySprite;
+}
+
+
+void Quest::startQuest(){
+	this->clock.resart();
+}
+
+void Quest::stopQuest(){
+	clock.stop();
+}
+
+void Quest::restartQuest(){
+	this->clock.start();
+}
+
+bool Quest::isCompleted(){
+	if(maxTime < clock.getElapsedTime().asSeconds()){
+		completed = true;
+		clock.stop();
+		return true;
+	}
+	return false;
+}
+
+int Quest::getMaxTime(){
+	return this->maxTime;
+}
+
+std::map<int,int> Quest::getExperience()[
+	return this->exp;
 }
