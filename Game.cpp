@@ -188,6 +188,9 @@ void Game::draw(){
 	if(currentActionMenu != 0){
 		this->currentActionMenu->draw(window,lastMousePositionX,lastMousePositionY);
 	}
+	if(currentQuest != 0){
+		window->draw(*this->currentQuest->getGameDisplaySprite());
+	}
 }
 
 void Game::init(){

@@ -13,7 +13,7 @@ Quest::Quest(int id,Item* item,std::map<int,int> need, std::map<int,int> exp, in
 	this->money = money;
 	this->createSprite("button_quest.png");
 	this->setFrameSize(SIZE_QUEST_BUTTON_WIDTH_NORMAL,SIZE_QUEST_BUTTON_HEIGHT_NORMAL);
-    this->setPosition(x,y);
+    	this->setPosition(x,y);
 
 	this->need[MATH_ID]			= 0;
 	this->need[ALGORITHM_ID]	= 0;
@@ -34,6 +34,16 @@ Quest::Quest(int id,Item* item,std::map<int,int> need, std::map<int,int> exp, in
         this->description->setColor(sf::Color::Black);
         this->description->setPosition(this->getXPosition()+8,this->getYPosition()+FONT_SIZE_NORMAL*2);
         this->description->setCharacterSize(FONT_SIZE_SMALL);
+	
+
+	sf::Texture* img = new sf::Texture();
+	if(!img->loadFromFile(getDisplaySpriteImgText())){
+		std::cout<<"File:"<<file<<"not found!"<<std::endl;
+		return;
+	}
+
+	this->gameDisplaySprite = new sf::Sprite(*img);
+	this->gameDisplaySprite->setPosition(SIZE_WINDOW_WIDTH_NORMAL,SIZE_WINDOW_HEIGHT_NORMAL)
 }
 
 
@@ -152,4 +162,26 @@ void Quest::setPosition(int x, int y){
     this->questName->setPosition(this->getXPosition()+8,this->getYPosition());
     this->description->setPosition(this->getXPosition()+8,this->getYPosition()+FONT_SIZE_NORMAL*2);
     
+}
+
+std::string Quest::getDisplaySpriteImgText(){
+    std::string str = "current_quest_";
+    switch(this->id){
+        case QUEST_HELLO_WORLD:
+            str += "hello_world";
+            break;
+        case QUEST_CALCULATOR:
+            str += "hello_calculator";
+            break;
+        default:
+            str += "template";
+            break;
+    }
+    str += ".png";
+
+    return str;
+}
+
+sf::Sprite* Quest::getGameDisplaySprite(){
+	return this->gameDisplaySprite;
 }

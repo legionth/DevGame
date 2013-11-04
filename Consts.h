@@ -45,6 +45,9 @@ const int FONT_SIZE_VERY_SMALL				= 8;
 const int FONT_SIZE_SMALL					= 12;
 const int FONT_SIZE_NORMAL					= 16;
 
+const int SIZE_CURRENT_QUEST_WIDTH_NORMAL			= 128;
+const int SIZE_CURRENT_QUEST_HEIGHT_NORMAL			= 256;
+
 enum ATTR_IDS{
 	MATH_ID				= 0,
 	ALGORITHM_ID		= 1,

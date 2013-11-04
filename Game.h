@@ -53,7 +53,7 @@ private:
 	Player* player;
 	Room* room;
 	int windowWidth;
-    int windowHeight;
+    	int windowHeight;
 	
 	Menu* currentMenu;
 	ActionMenu* currentActionMenu;
