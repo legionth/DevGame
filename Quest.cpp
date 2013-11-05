@@ -133,12 +133,16 @@ sf::Text* Quest::getNameText(){
     return text;
 }
 
+/**
+* Get Description Text and initialize the quest
+**/
 sf::Text* Quest::getDescText(){
     sf::Text* text = new sf::Text(); 
     switch(this->id){
         case QUEST_HELLO_WORLD:
             	text->setString("Write your first program.(Why should I greet this cruel World...?)");
 	    	maxTime = 4;
+
 	    	this->exp[MATH_ID]		= 0;
 		this->exp[ALGORITHM_ID]		= 1;
 		this->exp[PROGRAMMING_ID]  	= 1;
@@ -149,6 +153,7 @@ sf::Text* Quest::getDescText(){
         case QUEST_CALCULATOR:
 		text->setString("Write your first simple calculator. You love arithmetic operations!");
 		maxTime = 6;
+
 		this->exp[MATH_ID]		= 1;
 		this->exp[ALGORITHM_ID]		= 1;
 		this->exp[PROGRAMMING_ID]  	= 1;
@@ -157,8 +162,15 @@ sf::Text* Quest::getDescText(){
 		this->exp[ELECTRONICS_ID]	= 0;
             break;
         default:
-            text->setString("NOT FOUND");
-	    maxTime = 1;
+	        text->setString("NOT FOUND");
+	        maxTime = 1;
+
+	        this->exp[MATH_ID]		= 0;
+	        this->exp[ALGORITHM_ID]		= 0;
+	        this->exp[PROGRAMMING_ID]  	= 0;
+	        this->exp[DESIGN_ID]		= 0;
+	        this->exp[DATABASES_ID]		= 0;
+	        this->exp[ELECTRONICS_ID]	= 0;
             break;
     } 
     sf::Font *font = new sf::Font();
@@ -227,6 +239,9 @@ int Quest::getMaxTime(){
 	return this->maxTime;
 }
 
+/**
+* Get the expierience that you get as reward from this quest.
+**/
 std::map<int,int> Quest::getExperience()[
 	return this->exp;
 }

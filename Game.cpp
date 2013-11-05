@@ -142,6 +142,7 @@ void Game::run(){
 	 	}
 	}//end while
 	if(window->isOpen()){
+		this->checkCurrentQuest();
 		window->clear();
 		this->draw();
 		window->display();
@@ -192,7 +193,9 @@ void Game::draw(){
 		window->draw(*this->currentQuest->getGameDisplaySprite());
 	}
 }
-
+/**
+* Initalizing first gaming stuff
+**/
 void Game::init(){
 	Computer *computer = new Computer();
 	Box *box = new Box();
@@ -262,7 +265,9 @@ void Game::executeAction(int xArgument, int yArgument){
 			}
 		}
 }
-
+/**
+*	Executes the Quest button
+**/
 void Game::executeQuestAction(int xArgument, int yArgument){
 		int size = reinterpret_cast<DevMenu*>(currentMenu)->getQuests().size();
 		DevMenu* tmpMenu = reinterpret_cast<DevMenu*>(currentMenu);
@@ -283,7 +288,9 @@ void Game::executeQuestAction(int xArgument, int yArgument){
 			}
 		}
 }
-
+/**
+*	Executes the Buy Button button
+**/
 void Game::executeBuyAction(int xArgument, int yArgument){
 		int size = reinterpret_cast<BuyMenu*>(currentMenu)->getBuyButtons().size();
 		BuyMenu* tmpMenu = reinterpret_cast<BuyMenu*>(currentMenu);
