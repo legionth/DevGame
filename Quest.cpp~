@@ -191,6 +191,10 @@ void Quest::setPosition(int x, int y){
     
 }
 
+/**
+* Gets filename of screen sprite in game
+* @return string filename
+**/
 std::string Quest::getDisplaySpriteImgText(){
     std::string str = "current_quest_";
     switch(this->id){
@@ -226,6 +230,10 @@ void Quest::restartQuest(){
 	this->clock.start();
 }
 
+/**
+* Checks if quest is completed
+* @return boolean
+**/
 bool Quest::isCompleted(){
 	if(maxTime < clock.getElapsedTime().asSeconds()){
 		completed = true;
