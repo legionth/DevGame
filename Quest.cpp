@@ -230,6 +230,7 @@ bool Quest::isCompleted(){
 	if(maxTime < clock.getElapsedTime().asSeconds()){
 		completed = true;
 		clock.stop();
+		this->changeSprite("quest_completed.png");
 		return true;
 	}
 	return false;
@@ -244,4 +245,14 @@ int Quest::getMaxTime(){
 **/
 std::map<int,int> Quest::getExperience()[
 	return this->exp;
+}
+
+void Quest::changeSprite(std::string file){
+	sf::Texture* img = new sf::Texture();
+	if(!img->loadFromFile(file)){
+		std::cout<<"File:"<<file<<"not found!"<<std::endl;
+		return;
+	}
+
+	this->gameDisplaySprite->setTexture(img);
 }

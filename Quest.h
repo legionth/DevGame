@@ -59,5 +59,6 @@ private:
     	sf::Text* getDescText();
 	sf::Sprite* gameDisplaySprite;							// gameDisplaySprite is for drawing the current Quest in Game class
 	std::string getDisplaySpriteImgText();						// filter img for display sprite
+	void changeSprite(std::string file);
 };
 
