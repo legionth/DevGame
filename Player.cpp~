@@ -98,10 +98,10 @@ void Player::setInventory(Inventory* inventory){
 * add to current skill
 **/
 void Player::addSkills(std::map<int,int> exp){
-	this->math 		+= this->exp[MATH_ID];
-	this->algorithm 	+= this->exp[ALGORITHM_ID];
-	this->programming 	+= this->exp[PROGRAMMING_ID];
-	this->design	 	+= this->exp[DESIGN_ID];
-	this->databases 	+= this->exp[DATABASES_ID];
-	this->electronincs 	+= this->exp[ELECTRONICS_ID];
+	this->math =this->exp[MATH_ID];
+	this->exp[ALGORITHM_ID];
+	this->exp[PROGRAMMING_ID];
+	this->exp[DESIGN_ID];
+	this->exp[DATABASES_ID];
+	this->exp[ELECTRONICS_ID];
 }

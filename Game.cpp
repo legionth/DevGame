@@ -144,6 +144,7 @@ void Game::run(){
 	 	}
 	}//end while
 	if(window->isOpen()){
+		this->checkCurrentQuest();
 		window->clear();
 		this->draw();
 		window->display();
@@ -152,8 +153,8 @@ void Game::run(){
 }
 
 void Game::draw(){
-    room->draw(window);
-    player->draw(window);
+    	room->draw(window);
+    	player->draw(window);
 	int countRoomObjects = room->getRoomObjects().size();
 	
 	if(currentMenu != 0){                         //Dran denken #includen der *.h Dateien
@@ -190,8 +191,13 @@ void Game::draw(){
 	if(currentActionMenu != 0){
 		this->currentActionMenu->draw(window,lastMousePositionX,lastMousePositionY);
 	}
+	if(currentQuest != 0){
+		window->draw(*this->currentQuest->getGameDisplaySprite());
+	}
 }
-
+/**
+* Initalizing first gaming stuff
+**/
 void Game::init(){
 	Computer *computer = new Computer();
 	Box *box = new Box();
@@ -237,13 +243,16 @@ Menu* Game::getCurrentMenu(){
 	return this->currentMenu;
 }
 
-
+/**
+* Standard procedure for Buttons
+* @see below code for specific button actions
+**/
 void Game::executeAction(int xArgument, int yArgument){
 		int size = currentMenu->getButtons().size();
 		Menu* tmpMenu = currentMenu;
-		std::cout<<"size="<<size<<std::endl;
+
 		for(int i=0; i < size; i++){
-			Button* obj = currentMenu->getButtons()[i];			// @TODO das isnd nur buttons
+			Button* obj = currentMenu->getButtons()[i];			
 
 			if(obj->getXPosition()					  < xArgument &&
 				obj->getYPosition()					  < yArgument &&
@@ -258,14 +267,15 @@ void Game::executeAction(int xArgument, int yArgument){
 			}
 		}
 }
-
+/**
+*	Executes the Quest button
+**/
 void Game::executeQuestAction(int xArgument, int yArgument){
 		int size = reinterpret_cast<DevMenu*>(currentMenu)->getQuests().size();
 		DevMenu* tmpMenu = reinterpret_cast<DevMenu*>(currentMenu);
 		
-		std::cout<<"size="<<size<<std::endl;
 		for(int i=0; i < size; i++){
-			Quest* obj = reinterpret_cast<DevMenu*>(currentMenu)->getQuests()[i];			// @TODO das isnd nur buttons
+			Quest* obj = reinterpret_cast<DevMenu*>(currentMenu)->getQuests()[i];		
 
 			if(obj->getXPosition()					  < xArgument &&
 				obj->getYPosition()					  < yArgument &&
@@ -280,13 +290,15 @@ void Game::executeQuestAction(int xArgument, int yArgument){
 			}
 		}
 }
-
+/**
+*	Executes the Buy Button button
+**/
 void Game::executeBuyAction(int xArgument, int yArgument){
 		int size = reinterpret_cast<BuyMenu*>(currentMenu)->getBuyButtons().size();
 		BuyMenu* tmpMenu = reinterpret_cast<BuyMenu*>(currentMenu);
-		std::cout<<"size="<<size<<std::endl;
+
 		for(int i=0; i < size; i++){
-			BuyButton* obj = reinterpret_cast<BuyMenu*>(currentMenu)->getBuyButtons()[i];			// @TODO das isnd nur buttons
+			BuyButton* obj = reinterpret_cast<BuyMenu*>(currentMenu)->getBuyButtons()[i];			
 
 			if(obj->getXPosition()					  < xArgument &&
 				obj->getYPosition()					  < yArgument &&
@@ -331,4 +343,18 @@ Bookcase* Game::getCurrentBookcase(){
 
 sf::Text* Game::getMoneyText(){
 	return this->moneyText;
+}
+
+
+void Game::checkCurrentQuest(){
+	if(currentQuest != 0){
+		bool ok = currentQuest->isCompleted();
+		if(ok){
+			std::map<int,int> exp = currentQuest->getExperience();
+			int money = currentQuest = money;
+
+			this->player->setMoney(player->getMoney() + money);
+			this->player->addSkill(exp);	
+		}
+	}
 }

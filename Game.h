@@ -49,12 +49,13 @@ public:
 	sf::Text* getMoneyText();
 	Player* getPlayer();
 	static std::string convertInt(int number);
+	void checkCurrentQuest();
 private:
 	sf::RenderWindow* window;
 	Player* player;
 	Room* room;
 	int windowWidth;
-    int windowHeight;
+    	int windowHeight;
 	
 	Menu* currentMenu;
 	ActionMenu* currentActionMenu;

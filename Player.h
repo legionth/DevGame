@@ -32,7 +32,8 @@ public:
 	void setDesign(int i);
 	void setDatabases(int i);
 	void setElectronics(int electronics);
-
+	
+	void addSkills(std::map<int,int> m);
 	void move(int x, int y);
 	int getMoney();
 	void setMoney(int i);
