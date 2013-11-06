@@ -111,6 +111,8 @@ void Game::run(){
 				}
 				else if(currentMenu != 0 && currentMenu->getId() == MENU_BUY){
 					executeBuyAction(xArgument,yArgument);
+				}else if(currentMenu != 0 && currentMenu->getId() == MENU_BOOKCASE){
+					executeBookcaseAction(xArgument,yArgument);
 				}
 			}
 		 }
@@ -296,6 +298,29 @@ void Game::executeBuyAction(int xArgument, int yArgument){
 					if(currentMenu == 0 || tmpMenu != currentMenu){
 						break;
 					}
+			}
+		}
+}
+
+void Game::executeBookcaseAction(int xArgument, int yArgument){
+		int size = reinterpret_cast<BookcaseMenu*>(currentMenu)->getItemHoldButtons().size();
+		BookcaseMenu* tmpMenu = reinterpret_cast<BookcaseMenu*>(currentMenu);
+		std::cout<<"size="<<size<<std::endl;
+		for(int i=0; i < size; i++){
+			ItemHoldButtonSelect* obj = reinterpret_cast<BookcaseMenu*>(currentMenu)->getItemHoldButtons()[i];			// @TODO das isnd nur buttons
+
+			if(obj->getXPosition()					  < xArgument &&
+				obj->getYPosition()					  < yArgument &&
+				obj->getXPosition() + obj->getWidth()  > xArgument &&
+				obj->getYPosition() + obj->getHeight() > yArgument){
+					obj->action(this);
+					buttonDelay.restart();
+
+					if(currentMenu == 0 || tmpMenu != currentMenu){
+						break;
+					}
+			}else if(obj->isSelected()){
+				obj->select();
 			}
 		}
 }

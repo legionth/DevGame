@@ -26,14 +26,14 @@ Quest::Quest(int id,Item* item,std::map<int,int> need, std::map<int,int> exp, in
 	//this->description->setFont(*font);
 	//this->description->setCharacterSize(16);
 	this->questName = getNameText();
-        this->questName->setColor(sf::Color::Green);
-        this->questName->setPosition(this->getXPosition()+8,this->getYPosition());
-        this->questName->setCharacterSize(FONT_SIZE_NORMAL);
+    this->questName->setColor(sf::Color::Green);
+    this->questName->setPosition(this->getXPosition()+8,this->getYPosition());
+    this->questName->setCharacterSize(FONT_SIZE_NORMAL);
                 
-        this->description = getDescText();
-        this->description->setColor(sf::Color::Black);
-        this->description->setPosition(this->getXPosition()+8,this->getYPosition()+FONT_SIZE_NORMAL*2);
-        this->description->setCharacterSize(FONT_SIZE_SMALL);
+    this->description = getDescText();
+    this->description->setColor(sf::Color::Black);
+    this->description->setPosition(this->getXPosition()+8,this->getYPosition()+FONT_SIZE_NORMAL*2);
+    this->description->setCharacterSize(FONT_SIZE_SMALL);
 }
 
 

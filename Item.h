@@ -16,8 +16,8 @@ public:
 	Item(int id);
 	Item(int id,std::string toolTip);
 	Item(const Item& orig);
-    	virtual ~Item();
-    	int getId();
+    virtual ~Item();
+    int getId();
 	void setId(int i);
 	sf::Text getToolTip();
 	void setToolTip(std::string toolTip);

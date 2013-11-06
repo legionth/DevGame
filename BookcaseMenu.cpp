@@ -53,7 +53,7 @@ void BookcaseMenu::draw(sf::RenderWindow* window){
 			window->draw(*itemButtons[i]->getItem()->getSprite());
 		}
 		if(itemButtons[i]->isSelected() && itemButtons[i]->getItem() != 0){
-			itemButtons[i]->getItem()->getDescription()->setPosition(itemButtons[0]->getXPosition() ,itemButtons[itemButtons.size()]->getYPosition() + 16);
+			itemButtons[i]->getItem()->getDescText()->setPosition(itemButtons[0]->getXPosition() ,itemButtons[itemButtons.size()-1]->getYPosition() + 16);
 			window->draw(*itemButtons[i]->getItem()->getDescText());
 		}
 	}

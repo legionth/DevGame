@@ -106,7 +106,7 @@ sf::Text* Item::generateDescription(){
 		case ITEM_BOOK_HELLO_WORLD:
 			text->setString("Syntax.Logic.Fun.");
 			break;
-		case ITEM_BOOK_HELLO_WORLD:
+		case ITEM_BOOK_CALCULATOR:
 			text->setString("+-/*");
 			break;
 		default:

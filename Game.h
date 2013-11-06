@@ -45,6 +45,7 @@ public:
 	void executeAction(int xArgument, int yArgument);
 	void executeBuyAction(int xArgument, int yArgument);
 	void executeQuestAction(int xArgument, int yArgument);
+	void executeBookcaseAction(int xArgument, int yArgument);
 	sf::Text* getMoneyText();
 	Player* getPlayer();
 	static std::string convertInt(int number);
