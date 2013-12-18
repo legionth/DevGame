@@ -13,7 +13,7 @@ Quest::Quest(int id,Item* item,std::map<int,int> need, std::map<int,int> exp, in
 	this->money = money;
 	this->createSprite("button_quest.png");
 	this->setFrameSize(SIZE_QUEST_BUTTON_WIDTH_NORMAL,SIZE_QUEST_BUTTON_HEIGHT_NORMAL);
-    	this->setPosition(x,y);
+    this->setPosition(x,y);
 
 	this->need[MATH_ID]		= 0;
 	this->need[ALGORITHM_ID]	= 0;
@@ -30,32 +30,35 @@ Quest::Quest(int id,Item* item,std::map<int,int> need, std::map<int,int> exp, in
     this->questName->setPosition(this->getXPosition()+8,this->getYPosition());
     this->questName->setCharacterSize(FONT_SIZE_NORMAL);
                 
-<<<<<<< HEAD
+
     this->description = getDescText();
     this->description->setColor(sf::Color::Black);
     this->description->setPosition(this->getXPosition()+8,this->getYPosition()+FONT_SIZE_NORMAL*2);
     this->description->setCharacterSize(FONT_SIZE_SMALL);
-=======
-        this->description = getDescText();
-        this->description->setColor(sf::Color::Black);
-        this->description->setPosition(this->getXPosition()+8,this->getYPosition()+FONT_SIZE_NORMAL*2);
-        this->description->setCharacterSize(FONT_SIZE_SMALL);
+
+    this->description = getDescText();
+    this->description->setColor(sf::Color::Black);
+    this->description->setPosition(this->getXPosition()+8,this->getYPosition()+FONT_SIZE_NORMAL*2);
+    this->description->setCharacterSize(FONT_SIZE_SMALL);
 	
 
 	sf::Texture* img = new sf::Texture();
 	if(!img->loadFromFile(getDisplaySpriteImgText())){
-		std::cout<<"File:"<<file<<"not found!"<<std::endl;
+		std::cout<<"File:"<<getDisplaySpriteImgText()<<"not found!"<<std::endl;
 		return;
 	}
 
+	this->maxTime = 0;
 	this->gameDisplaySprite = new sf::Sprite(*img);
-	this->gameDisplaySprite->setPosition(SIZE_WINDOW_WIDTH_NORMAL,SIZE_WINDOW_HEIGHT_NORMAL)
->>>>>>> 54440473033ba3c90708029387789084c883cfd7
+	this->gameDisplaySprite->setPosition(SIZE_WINDOW_WIDTH_NORMAL,SIZE_WINDOW_HEIGHT_NORMAL);
 }
 
 
 Quest::~Quest(void)
 {
+	delete this->questName;
+	delete this->description;
+	delete this->item;
 }
 
 void Quest::action(Game* game){
@@ -125,7 +128,8 @@ void Quest::draw(sf::RenderWindow* window){
 }
 
 sf::Text* Quest::getNameText(){
-    sf::Text* text = new sf::Text(); 
+    sf::Text* text = new sf::Text();
+
     switch(this->id){
         case QUEST_HELLO_WORLD:
             text->setString("Hello World");
@@ -145,28 +149,29 @@ sf::Text* Quest::getNameText(){
 **/
 sf::Text* Quest::getDescText(){
     sf::Text* text = new sf::Text(); 
+
     switch(this->id){
         case QUEST_HELLO_WORLD:
-            	text->setString("Write your first program.(Why should I greet this cruel World...?)");
+            text->setString("Write your first program.(Why should I greet this cruel World...?)");
 	    	maxTime = 4;
 
 	    	this->exp[MATH_ID]		= 0;
-		this->exp[ALGORITHM_ID]		= 1;
-		this->exp[PROGRAMMING_ID]  	= 1;
-		this->exp[DESIGN_ID]		= 0;
-		this->exp[DATABASES_ID]		= 0;
-		this->exp[ELECTRONICS_ID]	= 0;
+			this->exp[ALGORITHM_ID]		= 1;
+			this->exp[PROGRAMMING_ID]  	= 1;
+			this->exp[DESIGN_ID]		= 0;
+			this->exp[DATABASES_ID]		= 0;
+			this->exp[ELECTRONICS_ID]	= 0;
             break;
         case QUEST_CALCULATOR:
-		text->setString("Write your first simple calculator. You love arithmetic operations!");
-		maxTime = 6;
+			text->setString("Write your first simple calculator. You love arithmetic operations!");
+			maxTime = 6;
 
-		this->exp[MATH_ID]		= 1;
-		this->exp[ALGORITHM_ID]		= 1;
-		this->exp[PROGRAMMING_ID]  	= 1;
-		this->exp[DESIGN_ID]		= 0;
-		this->exp[DATABASES_ID]		= 0;
-		this->exp[ELECTRONICS_ID]	= 0;
+			this->exp[MATH_ID]		= 1;
+			this->exp[ALGORITHM_ID]		= 1;
+			this->exp[PROGRAMMING_ID]  	= 1;
+			this->exp[DESIGN_ID]		= 0;
+			this->exp[DATABASES_ID]		= 0;
+			this->exp[ELECTRONICS_ID]	= 0;
             break;
         default:
 	        text->setString("NOT FOUND");
@@ -179,7 +184,8 @@ sf::Text* Quest::getDescText(){
 	        this->exp[DATABASES_ID]		= 0;
 	        this->exp[ELECTRONICS_ID]	= 0;
             break;
-    } 
+    }
+
     sf::Font *font = new sf::Font();
 
     if(!font->loadFromFile(FONT_STANDARD)){
@@ -209,10 +215,10 @@ std::string Quest::getDisplaySpriteImgText(){
             str += "hello_world";
             break;
         case QUEST_CALCULATOR:
-            str += "hello_calculator";
+            str += "calculator";
             break;
         default:
-            str += "template";
+            str += "default";
             break;
     }
     str += ".png";
@@ -226,15 +232,15 @@ sf::Sprite* Quest::getGameDisplaySprite(){
 
 
 void Quest::startQuest(){
-	this->clock.resart();
+	//this->clock.resart();
 }
 
 void Quest::stopQuest(){
-	clock.stop();
+	//clock.stop();
 }
 
 void Quest::restartQuest(){
-	this->clock.start();
+//	this->clock.start();
 }
 
 /**
@@ -244,7 +250,7 @@ void Quest::restartQuest(){
 bool Quest::isCompleted(){
 	if(maxTime < clock.getElapsedTime().asSeconds()){
 		completed = true;
-		clock.stop();
+		//clock.stop();
 		this->changeSprite("quest_completed.png");
 		return true;
 	}
@@ -258,7 +264,7 @@ int Quest::getMaxTime(){
 /**
 * Get the expierience that you get as reward from this quest.
 **/
-std::map<int,int> Quest::getExperience()[
+std::map<int,int> Quest::getExperience(){
 	return this->exp;
 }
 
@@ -269,5 +275,5 @@ void Quest::changeSprite(std::string file){
 		return;
 	}
 
-	this->gameDisplaySprite->setTexture(img);
+	this->gameDisplaySprite->setTexture(*img);
 }

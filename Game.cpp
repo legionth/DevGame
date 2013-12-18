@@ -30,6 +30,8 @@ Game::Game() {
 	this->room = new Room();
 	this->currentMenu = 0;
 	this->currentActionMenu = 0;
+	this->currentQuest = 0;
+
 	buttonDelay.restart();
 	
 	sf::Font* font = new sf::Font();
@@ -153,8 +155,8 @@ void Game::run(){
 }
 
 void Game::draw(){
-    	room->draw(window);
-    	player->draw(window);
+    room->draw(window);
+    player->draw(window);
 	int countRoomObjects = room->getRoomObjects().size();
 	
 	if(currentMenu != 0){                         //Dran denken #includen der *.h Dateien
@@ -191,6 +193,7 @@ void Game::draw(){
 	if(currentActionMenu != 0){
 		this->currentActionMenu->draw(window,lastMousePositionX,lastMousePositionY);
 	}
+
 	if(currentQuest != 0){
 		window->draw(*this->currentQuest->getGameDisplaySprite());
 	}
@@ -351,10 +354,10 @@ void Game::checkCurrentQuest(){
 		bool ok = currentQuest->isCompleted();
 		if(ok){
 			std::map<int,int> exp = currentQuest->getExperience();
-			int money = currentQuest = money;
+			int money = currentQuest->getMoney();
 
 			this->player->setMoney(player->getMoney() + money);
-			this->player->addSkill(exp);	
+			this->player->addSkills(exp);	
 		}
 	}
 }

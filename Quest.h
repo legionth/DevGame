@@ -32,7 +32,8 @@ public:
 
 	int getId();
 	int getMoney();
-    	void draw(sf::RenderWindow* window);
+
+    void draw(sf::RenderWindow* window);
 	sf::Sprite* getGameDisplaySprite();
 	std::map<int,int> getExperience();
 	// CurrentQuest Functions	
@@ -44,7 +45,7 @@ public:
 	int getMaxTime();
 private:
 	int id;
-        bool visible;								        // If this quest is shown in Menu
+    bool visible;								        // If this quest is shown in Menu
 	Item* item;
 	sf::Text *questName;
 	sf::Text *description;
@@ -55,8 +56,8 @@ private:
 	std::map<int,int> exp;								// Experience reward for completed this quest
 	bool completed;										// Completed Quest
 	int money;
-    	sf::Text* getNameText();
-    	sf::Text* getDescText();
+    sf::Text* getNameText();
+    sf::Text* getDescText();
 	sf::Sprite* gameDisplaySprite;							// gameDisplaySprite is for drawing the current Quest in Game class
 	std::string getDisplaySpriteImgText();						// filter img for display sprite
 	void changeSprite(std::string file);

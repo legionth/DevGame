@@ -46,7 +46,7 @@ private:
 	int design;
 	int databases;
 	int electronics;
-
+	float currentTime;
 	int money;
 	Inventory* inventory;    
 };

@@ -1,5 +1,46 @@
-﻿Der Buildvorgang wurde am 06.11.2013 22:37:13 gestartet.
+﻿Der Buildvorgang wurde am 19.11.2013 23:16:09 gestartet.
+     1>Projekt "C:\Users\legionth\Documents\GitHub\DevGame\DevGame.vcxproj" auf Knoten "2", Build Ziel(e).
+     1>InitializeBuildStatus:
+         Aktualisieren des Timestamps von "Debug\DevGame.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Users\legionth\Documents\Libs\SFML-2.0-rc\include" /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp
+         Game.cpp
+     1>Game.cpp(90): warning C4244: 'Argument': Konvertierung von 'int' in 'float', möglicher Datenverlust
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\legionth\Documents\GitHub\DevGame\Debug\DevGame.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\legionth\Documents\Libs\SFML-2.0-rc\lib" "sfml-graphics-d.lib" "sfml-system-d.lib" "sfml-main-d.lib" "sfml-window-d.lib" "sfml-network-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\legionth\Documents\GitHub\DevGame\Debug\DevGame.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\legionth\Documents\GitHub\DevGame\Debug\DevGame.lib" /MACHINE:X86 Debug\Action.obj
+         Debug\ActionMenu.obj
+         Debug\Bookcase.obj
+         Debug\BookcaseMenu.obj
+         Debug\Box.obj
+         Debug\BoxMenu.obj
+         Debug\Button.obj
+         Debug\BuyButton.obj
+         Debug\BuyMenu.obj
+         Debug\CloseButton.obj
+         Debug\Computer.obj
+         Debug\ComputerMenu.obj
+         Debug\DevMenu.obj
+         Debug\DrawAble.obj
+         Debug\Game.obj
+         Debug\Inventory.obj
+         Debug\Item.obj
+         Debug\ItemHoldButton.obj
+         Debug\ItemHoldButton_Select.obj
+         Debug\main.obj
+         Debug\Menu.obj
+         Debug\MenuButton.obj
+         Debug\Player.obj
+         Debug\PopUpMenu.obj
+         Debug\Quest.obj
+         Debug\Room.obj
+         Debug\RoomObject.obj
+         Debug\SellButton.obj
+         DevGame.vcxproj -> C:\Users\legionth\Documents\GitHub\DevGame\Debug\DevGame.exe
+       FinalizeBuildStatus:
+         Die Datei "Debug\DevGame.unsuccessfulbuild" wird gelöscht.
+         Aktualisieren des Timestamps von "Debug\DevGame.lastbuildstate".
+     1>Die Erstellung des Projekts "C:\Users\legionth\Documents\GitHub\DevGame\DevGame.vcxproj" ist abgeschlossen, Build Ziel(e).
 
 Build erfolgreich.
 
-Verstrichene Zeit 00:00:00.01
+Verstrichene Zeit 00:00:02.90
